@@ -1,13 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
+  <Header />
   <nav>
-    <router-link to="/">🏠 Forside</router-link> |
-    <router-link to="/billetter">🎫 Billetter</router-link>
+    
   </nav>
   <router-view />
+  <Footer />
 </template>
 
 
