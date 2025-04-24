@@ -3,7 +3,8 @@ fetch("HTML/Elements/header.html")
   .then(response => response.text())
   .then(data => {
     const header = document.querySelector("header");
-    if (header) header.innerHTML = data;
+    header.innerHTML = `<h1>${document.title}</h1>`;
+    if (header) header.innerHTML += data;
   });
 
 // Indlæs footer
