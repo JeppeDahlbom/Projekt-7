@@ -10,11 +10,9 @@ footer{
   display: block;
   position: fixed;
   width: 100%;
-}
-footer{
   bottom: 0;
   right: 0;
-  
+  padding: 20px;
 }
 
 </style>
