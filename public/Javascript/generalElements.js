@@ -1,5 +1,5 @@
 // Indlæs header
-fetch("HTML/Elements/header.html")
+fetch("../../HTML/Elements/header.html")
   .then(response => response.text())
   .then(data => {
     const header = document.querySelector("header");
@@ -8,7 +8,7 @@ fetch("HTML/Elements/header.html")
   });
 
 // Indlæs footer
-fetch("HTML/Elements/footer.html")
+fetch("../../HTML/Elements/footer.html")
   .then(response => response.text())
   .then(data => {
     const footer = document.querySelector("footer");
