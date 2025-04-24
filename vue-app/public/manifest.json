@@ -1,0 +1,16 @@
+{
+    "name": "Projekt 7",
+    "short_name": "P7",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0d47a1",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/AppLogo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
