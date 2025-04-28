@@ -5,21 +5,19 @@
     <button>Sæsonkort<br>underside</button>
   </nav>
 
-  <main>
-    <section class="ticket-card">
-      <div class="ticket-image">General kamp logo</div>
-      <div class="ticket-details">
-        <div>
-          <p><strong>Kamp title</strong></p>
-          <p>dato - lokation<br>Tidspunkt</p>
-          <p>Pris</p>
-        </div>
-        <button class="buy-button">Køb billet</button>
+  <section class="ticket-card">
+    <div class="ticket-image">General kamp logo</div>
+    <div class="ticket-details">
+      <div>
+        <p><strong>Kamp title</strong></p>
+        <p>dato - lokation<br>Tidspunkt</p>
+        <p>Pris</p>
       </div>
-    </section>
-  </main>
+      <button class="buy-button">Køb billet</button>
+    </div>
+  </section>
+  
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </template>
   
 <style scoped>

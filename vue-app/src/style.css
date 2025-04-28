@@ -1,32 +1,6 @@
-body{
-  padding-top: 100px;
-  padding-bottom: 100px;
+:root{
+  --Blue: #0048FF;
 }
-header, footer{
-  display: block;
-  position: fixed;
-  width: 100%;
+h1{
+  color: #ffffff;
 }
-header{
-  top: 0;
-}
-footer{
-  bottom: 0px;
-  
-}
-
-footer {
-  background-color: #f4f4f4;
-  color: #333;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
-}
-
-footer a {
-  color: #333;
-  text-decoration: none;
-  margin: 0 10px;
-}
-

@@ -1,29 +1,55 @@
 <script setup>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import { ref, onMounted, nextTick } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+const route = useRoute()
+const router = useRouter()
+
+const headerRef = ref(null)
+const footerRef = ref(null)
+
+const mainRef = ref(null)
+
+
+
+onMounted(() => {
+  router.afterEach(async () => {
+    await nextTick() // Vent på at DOM og route.name er opdateret
+      mainRef.value.style.paddingTop = `${headerRef.value.offsetHeight}px`;
+      mainRef.value.style.paddingBottom = `${footerRef.value.offsetHeight}px`;
+
+  })
+});
 </script>
 
 <template>
-  <Header />
-  <nav>
-    
-  </nav>
-  <router-view />
-  <Footer />
+  <header ref="headerRef"><h1>{{ route.name }}</h1></header>
+  <main ref="mainRef">
+    <router-view />
+  </main>
+  <footer ref="footerRef">
+    <router-link to="/">Forside</router-link> |
+    <router-link to="/billetter">Billetter</router-link>|
+    <router-link to="/Menu">Menu</router-link>
+  </footer>
 </template>
 
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+header,footer{
+  display: block;
+  position: fixed;
+  width: calc(100% - 40px);
+  left: 0;
+  padding: 20px;
+  background-color: var(--Blue);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+header{
+  top: 0;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+footer{
+  bottom: 0;
+}
+footer a{
+  color: white;
 }
 </style>
