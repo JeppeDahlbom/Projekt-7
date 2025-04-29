@@ -46,6 +46,9 @@ header,footer{
 header{
   top: 0;
 }
+header h1 {
+  margin: 0;
+}
 footer{
   bottom: 0;
 }

@@ -11,7 +11,7 @@ const menuItems = router.getRoutes().map(route => ({
 
 <template>
   <div>
-    <h2 class="menu-title">Menu overpunkt</h2>
+    <h2>Menu overpunkt</h2>
     <ul class="menu-list">
       <li v-for="item in menuItems" v-bind:key="item.path" class="menu-item">
         <p><router-link v-bind:to="item.path" class="menu-link">{{ item.title }}</router-link></p>
@@ -23,6 +23,7 @@ const menuItems = router.getRoutes().map(route => ({
 <style scoped>
 h2 {
   padding-bottom: 20px;
+  text-transform: uppercase;
 }
 
 
