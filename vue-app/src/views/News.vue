@@ -1,19 +1,23 @@
 <script setup>
+import newsBG1 from '../assets/images/newsBG1.webp'
+import newsBG2 from '../assets/images/newsBG2.webp'
+import newsBG3 from '../assets/images/newsBG3.webp'
+
 const newsDummy = [
   {
     header: "VI RYKKER SAMMEN",
     body: "Stå sammen på lægterne, når vi møder AC Horsens den 24. December kl. 21.30",
-    image: "../assets/icons/AppLogo.png"
+    image: newsBG1
   },
   {
     header: "KOM TIL STADION",
     body: "Oplev stemningen når OB tager imod Brøndby IF den 10. Januar kl. 19.00",
-    image: "https://via.placeholder.com/1200x500?text=Banner+2"
+    image: newsBG2
   },
   {
     header: "SÆSONSTART 2025",
     body: "Vær klar fra første fløjt – første kamp mod FC Midtjylland den 1. Februar kl. 18.00",
-    image: "https://via.placeholder.com/1200x500?text=Banner+3"
+    image: newsBG3
   }
 ]
 
@@ -55,5 +59,18 @@ const newsDummy = [
 <style scoped>
     swiper-slide{
         width: 100%;
+    }
+    h2{
+        border-left: 6px solid; /* bredde styres her */
+        border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
+        border-image-slice: 1;
+        padding-left: 20px; /* lidt afstand mellem kant og tekst */
+
+        }
+    .swiperBackground{
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px; /* hvis du vil have runde hjørner */
     }
 </style>
