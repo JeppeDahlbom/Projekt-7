@@ -28,20 +28,19 @@ const newsDummy = [
     <div class="NewsSlider">
         <h2>Nyheder</h2>
         <swiper-container
-        center-insufficient-slides = "true"  
         grab-cursor = "true" 
-        lazy-preload-prev-next = "1" 
         scrollbar = "true"  
-        slide-to-clicked-slide = "true" 
-        centered-slides = "true" 
         slides-per-view = "1"
         space-between = "20"
+        loop = "true"
     >
         <swiper-slide v-for="element in newsDummy">
             <div class="swiperBackground" v-bind:style="{ backgroundImage: 'url(' + element.image + ')' }">
-                <h3>{{ element.header }}</h3>
-                <p>{{ element.body }}</p>
-                <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
+                <div class="backgroundCover" style="background-color: rgba(0, 0, 0, 0.5);">
+                    <h3>{{ element.header }}</h3>
+                    <p>{{ element.body }}</p>
+                    <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
+                </div>
             </div>
         </swiper-slide>
     </swiper-container>
@@ -57,8 +56,9 @@ const newsDummy = [
     </div>
 </template>
 <style scoped>
-    swiper-slide{
-        width: 100%;
+
+    h3,p,a{
+        color: #fff;
     }
     h2{
         border-left: 6px solid; /* bredde styres her */
@@ -67,10 +67,14 @@ const newsDummy = [
         padding-left: 20px; /* lidt afstand mellem kant og tekst */
 
         }
-    .swiperBackground{
+    .swiperBackground, .backgroundCover{
         width: 100%;
         background-size: cover;
         background-position: center;
         border-radius: 10px; /* hvis du vil have runde hjørner */
+    }
+    .backgroundCover{
+        padding: 20px;
+        width: calc(100% - 40px);
     }
 </style>
