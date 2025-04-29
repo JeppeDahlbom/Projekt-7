@@ -3,4 +3,34 @@
 }
 h1{
   color: #ffffff;
+  font-family: "Anton", sans-serif;
+  font-style: normal;
+  font-size: 40px;
+}
+h2{
+  font-family: "Antonio", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 40px;
+}
+
+h3{
+  font-family: "Antonio", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+}
+h4{
+
+}
+a{
+
+}
+p{
+  font-family: "Gilda Display", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
 }
