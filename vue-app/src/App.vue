@@ -42,6 +42,7 @@ header,footer{
   left: 0;
   padding: 20px;
   background-color: var(--Blue);
+  z-index: 100;
 }
 header{
   top: 0;
