@@ -11,6 +11,7 @@ const menuItems = router.getRoutes().map(route => ({
 
 <template>
   <div>
+    
     <h2>Menu overpunkt</h2>
     <ul class="menu-list">
       <li v-for="item in menuItems" v-bind:key="item.path" class="menu-item">
