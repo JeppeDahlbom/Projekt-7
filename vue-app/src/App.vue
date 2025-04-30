@@ -14,8 +14,8 @@ const mainRef = ref(null)
 onMounted(() => {
   router.afterEach(async () => {
     await nextTick() // Vent på at DOM og route.name er opdateret
-      mainRef.value.style.paddingTop = `${headerRef.value.offsetHeight}px`;
-      mainRef.value.style.paddingBottom = `${footerRef.value.offsetHeight}px`;
+      mainRef.value.style.paddingTop = `${headerRef.value.offsetHeight + 10}px`;
+      mainRef.value.style.paddingBottom = `${footerRef.value.offsetHeight + 10}px`;
 
   })
 });

@@ -21,6 +21,44 @@ const newsDummy = [
   }
 ]
 
+  
+  
+  
+const gamesDummy = [
+  {
+    home: "OB",
+    away: "HIF",
+    dateTime:   new Date('2025-04-20T09:30:00'), // Før i dag, kl. 09:30
+    result:[1,1],
+    league: "Super league",
+    matchID: 1
+  },
+  {
+    home: "OB",
+    away: "HIF",
+    dateTime:   new Date('2025-04-28T15:45:00'), // Før i dag, kl. 15:45
+    result:[1,1],
+    league: "Super league",
+    matchID: 1
+  },
+  {
+    home: "OB",
+    away: "HIF",
+    dateTime:   new Date('2025-05-02T08:00:00'), // Efter i dag, kl. 08:00
+    result:[1,1],
+    league: "Super league",
+    matchID: 1
+  },
+  {
+    home: "OB",
+    away: "HIF",
+    dateTime:   new Date('2025-05-10T18:15:00'), // Efter i dag, kl. 18:15
+    result:[1,1],
+    league: "Super league",
+    matchID: 1
+  }
+]
+
 </script>
 
 
@@ -46,7 +84,24 @@ const newsDummy = [
     </swiper-container>
     </div>
     <div class="gamesSlider">
-
+        <h2>Nyheder</h2>
+        <swiper-container
+        grab-cursor = "true" 
+        scrollbar = "true"  
+        slides-per-view = "1"
+        space-between = "20"
+        loop = "true"
+    >
+        <swiper-slide v-for="element in newsDummy">
+            <div class="swiperBackground" v-bind:style="{ backgroundImage: 'url(' + element.image + ')' }">
+                <div class="backgroundCover" style="background-color: rgba(0, 0, 0, 0.5);">
+                    <h3>{{ element.header }}</h3>
+                    <p>{{ element.body }}</p>
+                    <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
+                </div>
+            </div>
+        </swiper-slide>
+    </swiper-container>
     </div>
     <div class="OBMedia">
 
@@ -76,5 +131,11 @@ const newsDummy = [
     .backgroundCover{
         padding: 20px;
         width: calc(100% - 40px);
+    }
+    swiper-slide{
+        margin-bottom: 16px;
+    }
+    swiper-container{
+        margin: 10px;
     }
 </style>

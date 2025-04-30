@@ -17,7 +17,7 @@ const routes = [
   { path: '/MånedensFan', name: 'Månedens fan', component: FanOfTheMonth },
   { path: '/Menu', name: 'MENU', component: Menu },
   { path: '/Placering', name: 'Placering', component: Placement },
-  { path: '/Sæson', name: 'Sæson', component: Season },
+  { path: '/season', name: 'Sæson', component: Season },
   { path: '/Sange', name: 'Sang katalog', component: Songs },
   { path: '/Holdet', name: 'Truppen', component: Squad },
   { path: '/Udskiftninger', name: 'Udskifninger', component: Transfer }
