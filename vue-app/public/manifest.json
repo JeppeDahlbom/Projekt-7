@@ -8,7 +8,7 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "/AppLogo.png",
+        "src": "/OBLogoFarve.svg",
         "sizes": "512x512",
         "type": "image/png"
       }
