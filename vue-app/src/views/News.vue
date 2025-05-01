@@ -39,7 +39,7 @@ const gamesDummy = [
     dateTime:   new Date('2025-04-28T15:45:00'), // Før i dag, kl. 15:45
     result:[1,1],
     league: "Super league",
-    matchID: 1
+    matchID: 2
   },
   {
     home: "OB",
@@ -49,7 +49,7 @@ const gamesDummy = [
     dateTime:   new Date('2025-05-02T08:00:00'), // Efter i dag, kl. 08:00
     result:[1,1],
     league: "Super league",
-    matchID: 1
+    matchID: 3
   },
   {
     home: "OB",
@@ -59,7 +59,7 @@ const gamesDummy = [
     dateTime:   new Date('2025-05-10T18:15:00'), // Efter i dag, kl. 18:15
     result:[1,1],
     league: "Super league",
-    matchID: 1
+    matchID: 4
   }
 ]
 
@@ -67,8 +67,8 @@ const gamesDummy = [
 
 
 <template>
-  <div class="NewsSlider">
-    <h2>Nyheder</h2>
+  <div class="newsSlider">
+    <h2 class="titleMark">Nyheder</h2>
     <swiper-container
     grab-cursor = "true" 
     scrollbar = "true"  
@@ -88,7 +88,7 @@ const gamesDummy = [
     </swiper-container>
   </div>
   <div class="gamesSlider">
-    <h2>Kampe</h2>
+    <h2 class="titleMark">Kampe</h2>
     <swiper-container
     grab-cursor = "true" 
     scrollbar = "true"  
@@ -106,7 +106,8 @@ const gamesDummy = [
           <img :src="`src/assets/icons/${element.away}Logo.svg`" alt="" />                    
           <h3>{{ element.away }}</h3>
         </div>
-        
+        <h3 style="grid-area: dateTime;">{{ element.dateTime }}</h3>
+        <p>{{  }}</p>
       </div>
     </swiper-slide>
   </swiper-container>
@@ -119,10 +120,10 @@ const gamesDummy = [
   </div>
 </template>
 <style scoped>
-  h3,p,a{
+  .newsSlider h3,p,a{
       color: #fff;
   }
-  h2{
+  .titleMark{
       border-left: 6px solid; /* bredde styres her */
       border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
       border-image-slice: 1;
@@ -156,9 +157,6 @@ const gamesDummy = [
     gap: 0px; /* juster som ønsket */
   }
 
-  .gamesSlider h3{
-    color: #000;
-  }
   .gamesSlider .club{
     width: 20vw;
   }
@@ -169,5 +167,6 @@ const gamesDummy = [
   .gamesSlider .club h3{
     width: 100%;
     text-align: center;
+    color: #000;
   }
 </style>
