@@ -10,29 +10,29 @@ import traningBG from '../assets/images/traning-bg.webp'
 const links = [
 {
     title: "Truppen",
-    link: "/season",
+    link: "/Holdet",
     image: traningBG
   },{
     title: "Kampe",
-    link: "/season",
+    link: "https://ob.dk/kampprogram",
     image: matchBG
   },{
     title: "Stilling",
-    link: "/season",
+    link: "/Stilling",
     image: teamworkBG
   },{
     title: "Fanshop",
-    link: "/season",
+    link: "https://www.unisport.dk/v/ob/",
     image: changeBG
   },
   {
     title: "Transfer",
-    link: "/season",
+    link: "/Transfers",
     image: playerBG
   },
   {
     title: "Månedens fan",
-    link: "/season",
+    link: "/MånedensFan",
     image: squadBG
   }
 ];
