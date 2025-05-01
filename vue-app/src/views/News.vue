@@ -23,15 +23,19 @@ const newsDummy = [
 const gamesDummy = [
   {
     home: "OB",
-    away: "HIF",
+    away: "SIF",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-04-20T09:30:00'), // Før i dag, kl. 09:30
     result:[1,1],
     league: "Super league",
     matchID: 1
   },
   {
-    home: "OB",
-    away: "HIF",
+    home: "SIF",
+    away: "OB",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-04-28T15:45:00'), // Før i dag, kl. 15:45
     result:[1,1],
     league: "Super league",
@@ -39,7 +43,9 @@ const gamesDummy = [
   },
   {
     home: "OB",
-    away: "HIF",
+    away: "SIF",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-05-02T08:00:00'), // Efter i dag, kl. 08:00
     result:[1,1],
     league: "Super league",
@@ -47,7 +53,9 @@ const gamesDummy = [
   },
   {
     home: "OB",
-    away: "HIF",
+    away: "SIF",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-05-10T18:15:00'), // Efter i dag, kl. 18:15
     result:[1,1],
     league: "Super league",
@@ -59,84 +67,107 @@ const gamesDummy = [
 
 
 <template>
-    <div class="NewsSlider">
-        <h2>Nyheder</h2>
-        <swiper-container
-        grab-cursor = "true" 
-        scrollbar = "true"  
-        slides-per-view = "1"
-        space-between = "20"
-        loop = "true"
+  <div class="NewsSlider">
+    <h2>Nyheder</h2>
+    <swiper-container
+    grab-cursor = "true" 
+    scrollbar = "true"  
+    slides-per-view = "1"
+    space-between = "20"
+    loop = "true"
     >
-        <swiper-slide v-for="element in newsDummy">
-            <div class="swiperBackground" v-bind:style="{ backgroundImage: `url('${element.image}')` }">
-                <div class="backgroundCover" style="background-color: rgba(0, 0, 0, 0.5);">
-                    <h3>{{ element.header }}</h3>
-                    <p>{{ element.body }}</p>
-                    <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
-                </div>
-            </div>
-        </swiper-slide>
-    </swiper-container>
-    </div>
-    <div class="gamesSlider">
-        <h2>Nyheder</h2>
-        <swiper-container
-        grab-cursor = "true" 
-        scrollbar = "true"  
-        slides-per-view = "1"
-        space-between = "20"
-        loop = "true"
-    >
-        <swiper-slide v-for="element in gamesDummy">
-            <div class="swiperBackground" v-bind:style="{ backgroundImage: 'url(' + element.image + ')' }">
-                  <div>
-                    <img :src="`src/assets/icons/${element.home}Logo.svg`" alt="" />                    <h3>{{ element.home }}</h3>
-                  </div>
+      <swiper-slide v-for="element in newsDummy">
+          <div class="swiperBackground" v-bind:style="{ backgroundImage: `url('${element.image}')` }">
+              <div class="backgroundCover" style="background-color: rgba(0, 0, 0, 0.5);">
                   <h3>{{ element.header }}</h3>
-                    <p>{{ element.body }}</p>
-                    <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
-            </div>
-        </swiper-slide>
+                  <p>{{ element.body }}</p>
+                  <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
+              </div>
+          </div>
+      </swiper-slide>
     </swiper-container>
-    </div>
-    <div class="OBMedia">
+  </div>
+  <div class="gamesSlider">
+    <h2>Kampe</h2>
+    <swiper-container
+    grab-cursor = "true" 
+    scrollbar = "true"  
+    slides-per-view = "1"
+    space-between = "20"
+    loop = "true"
+>
+    <swiper-slide v-for="element in gamesDummy">
+      <div class="swiperContainer">
+        <div class="club" style="grid-area: home;">
+          <img :src="`src/assets/icons/${element.home}Logo.svg`" alt="" />                    
+          <h3>{{ element.home }}</h3>
+        </div>
+        <div class="club" style="grid-area: away;">
+          <img :src="`src/assets/icons/${element.away}Logo.svg`" alt="" />                    
+          <h3>{{ element.away }}</h3>
+        </div>
+        
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  </div>
+  <div class="OBMedia">
 
-    </div>
-    <div class="MyProfile">
+  </div>
+  <div class="MyProfile">
 
-    </div>
+  </div>
 </template>
 <style scoped>
+  h3,p,a{
+      color: #fff;
+  }
+  h2{
+      border-left: 6px solid; /* bredde styres her */
+      border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
+      border-image-slice: 1;
+      padding-left: 20px; /* lidt afstand mellem kant og tekst */
+  }
+  .swiperBackground, .backgroundCover{
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px; /* hvis du vil have runde hjørner */
+  }
+  .backgroundCover{
+      padding: 20px;
+      width: calc(100% - 40px);
+  }
+  swiper-slide{
+      margin-bottom: 16px;
+  }
+  swiper-container{
+      margin: 10px;
+  }
 
-    h3,p,a{
-        color: #fff;
-    }
-    h2{
-        border-left: 6px solid; /* bredde styres her */
-        border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
-        border-image-slice: 1;
-        padding-left: 20px; /* lidt afstand mellem kant og tekst */
+  .gamesSlider .swiperContainer{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "home homeScore dateTime awayScore away"
+      "home homeScore stadion awayScore away"
+      "home homeScore addCalendar awayScore away";
+    gap: 0px; /* juster som ønsket */
+  }
 
-    }
-    .swiperBackground, .backgroundCover{
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-        border-radius: 10px; /* hvis du vil have runde hjørner */
-    }
-    .backgroundCover{
-        padding: 20px;
-        width: calc(100% - 40px);
-    }
-    swiper-slide{
-        margin-bottom: 16px;
-    }
-    swiper-container{
-        margin: 10px;
-    }
-
-    .gamesSlider h3{
-      color: #000;
-    }
+  .gamesSlider h3{
+    color: #000;
+  }
+  .gamesSlider .club{
+    width: 20vw;
+  }
+  .gamesSlider .club img{
+    width: 100%;
+    object-fit: contain;
+  }
+  .gamesSlider .club h3{
+    width: 100%;
+    text-align: center;
+  }
 </style>
