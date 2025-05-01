@@ -22,6 +22,9 @@ onMounted(() => {
 </script>
 
 <template>
+    <div class="animation">
+      <img src="../src/assets/icons/OBLogo.svg" alt="">
+    </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
     <router-view />
@@ -56,4 +59,30 @@ footer{
 footer a{
   color: white;
 }
+
+.animation {
+  display: block;
+  animation: popIn 1s steps(1, end) forwards;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 1;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background-color: var(--Blue);
+
+}
+.animation img{
+  width: 100%;
+}
+
+@keyframes popIn {
+
+  100% {
+    height: 0%;
+  }
+}
+
 </style>

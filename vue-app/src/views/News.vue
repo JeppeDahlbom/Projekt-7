@@ -102,12 +102,15 @@ const gamesDummy = [
           <img :src="`src/assets/icons/${element.home}Logo.svg`" alt="" />                    
           <h3>{{ element.home }}</h3>
         </div>
+        <h3 class="score" style="grid-area: homeScore;">{{ element.result[0] }}</h3>
         <div class="club" style="grid-area: away;">
           <img :src="`src/assets/icons/${element.away}Logo.svg`" alt="" />                    
           <h3>{{ element.away }}</h3>
         </div>
-        <h3 style="grid-area: dateTime;">{{ element.dateTime }}</h3>
-        <p>{{  }}</p>
+        <h3 class="score" style="grid-area: awayScore;">{{ element.result[1] }}</h3>
+        <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
+        <p class="location" style="grid-area: stadion;">{{ element.stadion }}</p>
+        <a class="addToCalendar" style="grid-area: addCalendar;" href="">Add to Calendar</a>
       </div>
     </swiper-slide>
   </swiper-container>
@@ -120,8 +123,11 @@ const gamesDummy = [
   </div>
 </template>
 <style scoped>
-  .newsSlider h3,p,a{
+  .newsSlider h3, .newsSlider p, .newsSlider a{
       color: #fff;
+  }
+  .gamesSlider h3, .newsSlider p{
+    color: var(--Blue);
   }
   .titleMark{
       border-left: 6px solid; /* bredde styres her */
@@ -148,7 +154,7 @@ const gamesDummy = [
 
   .gamesSlider .swiperContainer{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
       "home homeScore dateTime awayScore away"
@@ -158,7 +164,7 @@ const gamesDummy = [
   }
 
   .gamesSlider .club{
-    width: 20vw;
+    width: 100%;
   }
   .gamesSlider .club img{
     width: 100%;
@@ -168,5 +174,21 @@ const gamesDummy = [
     width: 100%;
     text-align: center;
     color: #000;
+  }
+  .gamesSlider .score{
+    text-align: center;
+    margin: auto;
+  }
+  .gamesSlider .time{
+    font-size: 19px;
+    text-align: center;
+    font-weight: 1000;
+  }
+  .gamesSlider .location{
+    font-size: 14px;
+    text-align: center;
+  }
+  .gamesSlider .addToCalendar{
+    text-align: center;
   }
 </style>
