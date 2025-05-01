@@ -11,29 +11,29 @@ const links = [
 {
     title: "Truppen",
     link: "/season",
-    image: "/src/assets/images/traning-bg.webp"
+    image: traningBG
   },{
     title: "Kampe",
     link: "/season",
-    image: "/src/assets/images/match-bg.jpg"
+    image: matchBG
   },{
     title: "Stilling",
     link: "/season",
-    image: "/src/assets/images/teamwork-bg.webp"
+    image: teamworkBG
   },{
     title: "Fanshop",
     link: "/season",
-    image: "/src/assets/images/change-bg.png"
+    image: changeBG
   },
   {
     title: "Transfer",
     link: "/season",
-    image: "/src/assets/images/player-bg.png"
+    image: playerBG
   },
   {
     title: "Månedens fan",
     link: "/season",
-    image: playerBG
+    image: squadBG
   }
 ];
 
