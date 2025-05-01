@@ -1,23 +1,19 @@
 <script setup>
-import newsBG1 from '../assets/images/newsBG1.webp'
-import newsBG2 from '../assets/images/newsBG2.webp'
-import newsBG3 from '../assets/images/newsBG3.webp'
-
 const newsDummy = [
   {
     header: "VI RYKKER SAMMEN",
     body: "Stå sammen på lægterne, når vi møder AC Horsens den 24. December kl. 21.30",
-    image: newsBG1
+    image: "/src/assets/images/newsBG1.webp"
   },
   {
     header: "KOM TIL STADION",
     body: "Oplev stemningen når OB tager imod Brøndby IF den 10. Januar kl. 19.00",
-    image: newsBG2
+    image: "/src/assets/images/newsBG2.webp"
   },
   {
     header: "SÆSONSTART 2025",
     body: "Vær klar fra første fløjt – første kamp mod FC Midtjylland den 1. Februar kl. 18.00",
-    image: newsBG3
+    image: "/src/assets/images/newsBG3.webp"
   }
 ]
 
@@ -73,7 +69,7 @@ const gamesDummy = [
         loop = "true"
     >
         <swiper-slide v-for="element in newsDummy">
-            <div class="swiperBackground" v-bind:style="{ backgroundImage: 'url(' + element.image + ')' }">
+            <div class="swiperBackground" v-bind:style="{ backgroundImage: `url('${element.image}')` }">
                 <div class="backgroundCover" style="background-color: rgba(0, 0, 0, 0.5);">
                     <h3>{{ element.header }}</h3>
                     <p>{{ element.body }}</p>
@@ -92,13 +88,14 @@ const gamesDummy = [
         space-between = "20"
         loop = "true"
     >
-        <swiper-slide v-for="element in newsDummy">
+        <swiper-slide v-for="element in gamesDummy">
             <div class="swiperBackground" v-bind:style="{ backgroundImage: 'url(' + element.image + ')' }">
-                <div class="backgroundCover" style="background-color: rgba(0, 0, 0, 0.5);">
-                    <h3>{{ element.header }}</h3>
+                  <div>
+                    <img :src="`src/assets/icons/${element.home}Logo.svg`" alt="" />                    <h3>{{ element.home }}</h3>
+                  </div>
+                  <h3>{{ element.header }}</h3>
                     <p>{{ element.body }}</p>
                     <div class="CallToActionButton"><a href="https://ob.eventii.dk/" target="_blank">KØB BILLET HER</a></div>
-                </div>
             </div>
         </swiper-slide>
     </swiper-container>
@@ -121,7 +118,7 @@ const gamesDummy = [
         border-image-slice: 1;
         padding-left: 20px; /* lidt afstand mellem kant og tekst */
 
-        }
+    }
     .swiperBackground, .backgroundCover{
         width: 100%;
         background-size: cover;
@@ -137,5 +134,9 @@ const gamesDummy = [
     }
     swiper-container{
         margin: 10px;
+    }
+
+    .gamesSlider h3{
+      color: #000;
     }
 </style>
