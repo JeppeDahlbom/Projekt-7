@@ -33,7 +33,7 @@ const links = [
   {
     title: "Månedens fan",
     link: "/season",
-    image: "/src/assets/images/bystanders-bg.png"
+    image: playerBG
   }
 ];
 
