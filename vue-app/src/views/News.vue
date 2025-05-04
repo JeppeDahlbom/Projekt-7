@@ -74,7 +74,7 @@ const gamesDummy = [
     scrollbar = "true"  
     slides-per-view = "1"
     space-between = "20"
-    loop = "true"
+    loop = "false"
     >
       <swiper-slide v-for="element in newsDummy">
           <div class="swiperBackground" v-bind:style="{ backgroundImage: `url('${element.image}')` }">
@@ -91,10 +91,10 @@ const gamesDummy = [
     <h2 class="titleMark">Kampe</h2>
     <swiper-container
     grab-cursor = "true" 
-    scrollbar = "true"  
     slides-per-view = "1"
     space-between = "20"
-    loop = "true"
+    loop = "false"
+    pagination = "true"
 >
     <swiper-slide v-for="element in gamesDummy">
       <div class="swiperContainer">
@@ -108,6 +108,7 @@ const gamesDummy = [
           <h3>{{ element.away }}</h3>
         </div>
         <h3 class="score" style="grid-area: awayScore;">{{ element.result[1] }}</h3>
+
         <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
         <p class="location" style="grid-area: stadion;">{{ element.stadion }}</p>
         <a class="addToCalendar" style="grid-area: addCalendar;" href="">Add to Calendar</a>
@@ -154,13 +155,19 @@ const gamesDummy = [
 
   .gamesSlider .swiperContainer{
     display: grid;
+    background-image: url('src/assets/images/GamesBG.svg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% auto;
     grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
       "home homeScore dateTime awayScore away"
-      "home homeScore stadion awayScore away"
-      "home homeScore addCalendar awayScore away";
-    gap: 0px; /* juster som ønsket */
+      "home . stadion . away"
+      "home . addCalendar . away";
+    padding-bottom: 20px;
+    padding-top: 20px;
+
   }
 
   .gamesSlider .club{
@@ -190,5 +197,17 @@ const gamesDummy = [
   }
   .gamesSlider .addToCalendar{
     text-align: center;
+    margin: auto;
+    padding: 3px 6px;
+    margin-top: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px 2px black;
   }
+  .gamesSlider .swiper-pagination-horizontal{
+    position: absolute;
+    top: 0px !important;
+  }
+  ::v-deep(swiper-container::part(pagination)) {
+  top: 0;
+}
 </style>
