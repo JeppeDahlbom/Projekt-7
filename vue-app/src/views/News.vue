@@ -1,9 +1,10 @@
 <script setup>
+import newsBG1 from '../assets/images/newsBG1.webp'
 const newsDummy = [
   {
     header: "VI RYKKER SAMMEN",
     body: "Stå sammen på lægterne, når vi møder AC Horsens den 24. December kl. 21.30",
-    image: "/src/assets/images/newsBG1.webp"
+    image: newsBG1
   },
   {
     header: "KOM TIL STADION",
@@ -95,7 +96,7 @@ const gamesDummy = [
     space-between = "20"
     loop = "false"
     pagination = "true"
->
+> 
     <swiper-slide v-for="element in gamesDummy">
       <div class="swiperContainer">
         <div class="club" style="grid-area: home;">
