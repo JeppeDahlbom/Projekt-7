@@ -1,5 +1,12 @@
 <script setup>
 import newsBG1 from '../assets/images/newsBG1.webp'
+import newsBG2 from '../assets/images/newsBG2.webp'
+import newsBG3 from '../assets/images/newsBG3.webp'
+import gamesBG from '../assets/images/gamesBG.svg'
+import OBMedia from '../assets/images/OBMedia.png'
+import postIMG from '../assets/images/postIMG.png'
+
+
 const newsDummy = [
   {
     header: "VI RYKKER SAMMEN",
@@ -9,14 +16,14 @@ const newsDummy = [
   {
     header: "KOM TIL STADION",
     body: "Oplev stemningen når OB tager imod Brøndby IF den 10. Januar kl. 19.00",
-    image: "/src/assets/images/newsBG2.webp"
+    image: newsBG2
   },
   {
     header: "SÆSONSTART 2025",
     body: "Vær klar fra første fløjt – første kamp mod FC Midtjylland den 1. Februar kl. 18.00",
-    image: "/src/assets/images/newsBG3.webp"
+    image: newsBG3
   }
-]
+];
 
   
   
@@ -62,7 +69,20 @@ const gamesDummy = [
     league: "Super league",
     matchID: 4
   }
-]
+];
+
+// Opretter en ny stilregel og tilføjer den til dokumentets <style>-tag
+const style = document.createElement('style');
+style.textContent = `
+  .gamesSlider .swiperContainer{
+    background-image: url("${gamesBG}");
+  }
+`;
+document.head.appendChild(style);
+
+
+
+
 
 </script>
 
@@ -118,13 +138,46 @@ const gamesDummy = [
   </swiper-container>
   </div>
   <div class="OBMedia">
-
+    <h2 class="titleMark">OB Media</h2>
+    <div class="container">
+      <div class="playButton">
+        <a href="">
+          <img :src="OBMedia" alt="">
+      </a>
+      </div>
+      <div class="post">
+        <a href="">
+          <img :src="postIMG" alt="">
+        </a>
+      </div>
+    </div>
   </div>
   <div class="MyProfile">
 
   </div>
 </template>
 <style scoped>
+.OBMedia .container{
+  display: flex;
+  flex-direction: row;
+}
+.OBMedia .container .playButton, .OBMedia .container .post{
+  width: 100%;
+}
+.OBMedia .container a, .OBMedia .container img{
+  width: calc(100% - 16px);
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.OBMedia .container a{
+  margin: 10px 8px ;
+}
+
+.newsSlider, .gamesSlider, .OBMedia, .MyProfile{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
   .newsSlider h3, .newsSlider p, .newsSlider a{
       color: #fff;
   }
@@ -136,6 +189,7 @@ const gamesDummy = [
       border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
       border-image-slice: 1;
       padding-left: 20px; /* lidt afstand mellem kant og tekst */
+      font-size: 20px;
   }
   .swiperBackground, .backgroundCover{
       width: 100%;
@@ -156,7 +210,6 @@ const gamesDummy = [
 
   .gamesSlider .swiperContainer{
     display: grid;
-    background-image: url('src/assets/images/GamesBG.svg');
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100% auto;
@@ -202,7 +255,7 @@ const gamesDummy = [
     padding: 3px 6px;
     margin-top: 10px;
     background-color: #fff;
-    box-shadow: 0px 0px 3px 2px black;
+    box-shadow: 0px 0px 3px 2px #00000080;
   }
   .gamesSlider .swiper-pagination-horizontal{
     position: absolute;
@@ -210,5 +263,8 @@ const gamesDummy = [
   }
   ::v-deep(swiper-container::part(pagination)) {
   top: 0;
+}
+.gamesSlider .swiperContainer {
+  fill: #CCDAFF;
 }
 </style>
