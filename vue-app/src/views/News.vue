@@ -70,7 +70,7 @@ const gamesDummy = [
   }
 ];
 
-// Opretter en ny stilregel og tilføjer den til dokumentets <style>-tag
+
 
 
 import OBLogo from '../assets/icons/OBLogo.svg'
@@ -113,7 +113,7 @@ const getLogoLink = (team) =>{
     pagination = "true"
 > 
     <swiper-slide v-for="element in gamesDummy">
-      <div class="swiperContainer">
+      <div class="swiperContainer" :style="{ backgroundImage: 'url(/assets/images/gamesBG.svg)' }">
         <div class="club" style="grid-area: home;">
           <img :src="getLogoLink(element.home)" alt="" />                    
         </div>
