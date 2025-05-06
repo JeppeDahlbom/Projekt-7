@@ -86,7 +86,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     scrollbar = "true"  
     slides-per-view = "1"
     space-between = "20"
-    loop = "false"
+    :loop = "false"
     >
       <swiper-slide v-for="element in newsDummy">
           <div class="swiperBackground" v-bind:style="{ backgroundImage: `url('${element.image}')` }">
@@ -105,7 +105,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     grab-cursor = "true" 
     slides-per-view = "1"
     space-between = "20"
-    loop = "false"
+    :loop = "false"
     pagination = "true"
 > 
     <swiper-slide v-for="element in gamesDummy">
@@ -142,8 +142,11 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     </div>
   </div>
   <div class="MyProfile">
-    <div class="background">
-      <h3>Odense</h3>
+    <h2 class="titleMark">Min profil</h2>
+    <div>
+      <div class="background">
+        <h3>Odense</h3>
+      </div>
     </div>
   </div>
 </template>
@@ -181,6 +184,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
       border-image-slice: 1;
       padding-left: 20px; /* lidt afstand mellem kant og tekst */
       font-size: 20px;
+      text-transform: uppercase;
   }
   .swiperBackground, .backgroundCover{
       width: 100%;
