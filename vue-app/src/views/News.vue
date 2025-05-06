@@ -73,10 +73,9 @@ const gamesDummy = [
 
 
 
-import OBLogo from '../assets/icons/OBLogo.svg'
 const getLogoLink = (team) =>{
 
-  return `src/assets/icons/${team}Logo.svg`
+  return `/assets/icons/${team}Logo.svg`
 }
 
 </script>
@@ -119,7 +118,7 @@ const getLogoLink = (team) =>{
         </div>
         <h3 class="score" style="grid-area: homeScore;">{{ element.result[0] }}</h3>
         <div class="club" style="grid-area: away;">
-          <img :src="`src/assets/icons/${element.away}Logo.svg`" alt="" />                    
+          <img :src="`/assets/icons/${element.away}Logo.svg`" alt="" />                    
         </div>
         <h3 class="score" style="grid-area: awayScore;">{{ element.result[1] }}</h3>
 
