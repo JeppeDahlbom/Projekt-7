@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
     <div class="animation">
-      <img src="../src/assets/icons/OBLogo.svg" alt="">
+      <img src="/assets/icons/OBLogo.svg" alt="">
     </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
