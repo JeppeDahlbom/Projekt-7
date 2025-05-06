@@ -81,8 +81,11 @@ style.textContent = `
 document.head.appendChild(style);
 
 
+import OBLogo from '../assets/icons/OBLogo.svg'
+const getLogoLink = (team) =>{
 
-
+  return `src/assets/icons/${team}Logo.svg`
+}
 
 </script>
 
@@ -120,18 +123,16 @@ document.head.appendChild(style);
     <swiper-slide v-for="element in gamesDummy">
       <div class="swiperContainer">
         <div class="club" style="grid-area: home;">
-          <img :src="`src/assets/icons/${element.home}Logo.svg`" alt="" />                    
-          <h3>{{ element.home }}</h3>
+          <img :src="getLogoLink(element.home)" alt="" />                    
         </div>
         <h3 class="score" style="grid-area: homeScore;">{{ element.result[0] }}</h3>
         <div class="club" style="grid-area: away;">
           <img :src="`src/assets/icons/${element.away}Logo.svg`" alt="" />                    
-          <h3>{{ element.away }}</h3>
         </div>
         <h3 class="score" style="grid-area: awayScore;">{{ element.result[1] }}</h3>
 
         <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
-        <p class="location" style="grid-area: stadion;">{{ element.stadion }}</p>
+        <p class="location" style="grid-area: stadion;">{{ element.stadion.trim() }}</p>
         <a class="addToCalendar" style="grid-area: addCalendar;" href="">Add to Calendar</a>
       </div>
     </swiper-slide>
@@ -153,7 +154,9 @@ document.head.appendChild(style);
     </div>
   </div>
   <div class="MyProfile">
-
+    <div class="background">
+      <h3>Odense</h3>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -219,7 +222,7 @@ document.head.appendChild(style);
       "home homeScore dateTime awayScore away"
       "home . stadion . away"
       "home . addCalendar . away";
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     padding-top: 20px;
 
   }
@@ -248,12 +251,13 @@ document.head.appendChild(style);
   .gamesSlider .location{
     font-size: 14px;
     text-align: center;
+    max-height: 20px;
   }
   .gamesSlider .addToCalendar{
     text-align: center;
     margin: auto;
     padding: 3px 6px;
-    margin-top: 10px;
+    margin-bottom: 15px;
     background-color: #fff;
     box-shadow: 0px 0px 3px 2px #00000080;
   }
