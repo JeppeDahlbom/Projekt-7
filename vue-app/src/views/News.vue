@@ -1,10 +1,10 @@
 <script setup>
-import newsBG1 from '../assets/images/newsBG1.webp'
-import newsBG2 from '../assets/images/newsBG2.webp'
-import newsBG3 from '../assets/images/newsBG3.webp'
-import gamesBG from '../assets/images/gamesBG.svg?url'
-import OBMedia from '../assets/images/OBMedia.png'
-import postIMG from '../assets/images/postIMG.png'
+import newsBG1 from '@/assets/images/newsBG1.webp'
+import newsBG2 from '@/assets/images/newsBG2.webp'
+import newsBG3 from '@/assets/images/newsBG3.webp'
+import gamesBG from '@/assets/images/gamesBG.svg?url'
+import OBMedia from '@/assets/images/OBMedia.png'
+import postIMG from '@/assets/images/postIMG.png'
 
 
 const newsDummy = [
