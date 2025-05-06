@@ -2,7 +2,7 @@
 import newsBG1 from '../assets/images/newsBG1.webp'
 import newsBG2 from '../assets/images/newsBG2.webp'
 import newsBG3 from '../assets/images/newsBG3.webp'
-import gamesBG from '../assets/images/gamesBG.svg'
+import gamesBG from '../assets/images/gamesBG.svg?url'
 import OBMedia from '../assets/images/OBMedia.png'
 import postIMG from '../assets/images/postIMG.png'
 
@@ -72,13 +72,6 @@ const gamesDummy = [
 ];
 
 // Opretter en ny stilregel og tilføjer den til dokumentets <style>-tag
-const style = document.createElement('style');
-style.textContent = `
-  .gamesSlider .swiperContainer{
-    background-image: url("${gamesBG}");
-  }
-`;
-document.head.appendChild(style);
 
 
 import OBLogo from '../assets/icons/OBLogo.svg'
@@ -121,7 +114,7 @@ const getLogoLink = (team) =>{
     pagination = "true"
 > 
     <swiper-slide v-for="element in gamesDummy">
-      <div class="swiperContainer">
+      <div class="swiperContainer"   :style="{ backgroundImage: `url('${gamesBG}')` }">
         <div class="club" style="grid-area: home;">
           <img :src="getLogoLink(element.home)" alt="" />                    
         </div>
