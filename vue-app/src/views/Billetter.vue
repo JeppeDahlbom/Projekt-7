@@ -80,6 +80,8 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   
   .container h3{
     text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
   }
   
 
@@ -185,6 +187,8 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 }
 .v{
   grid-area: v;
+  font-size: 12px !important;
+  
 }
 .logoImg{
   margin: auto;
