@@ -53,7 +53,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 
     <div class="background" v-for="element in gamesDummy">
                 <div class="container" >
-                    <h2 class="liga">{{ element.league }}</h2>
+                    <h3 class="liga">{{ element.league }}</h3>
                     <h3 class="homeName">{{ element.home }}</h3> 
                     <h3 class="v">v</h3>
                     <h3 class="awayName">{{ element.away }}</h3>
