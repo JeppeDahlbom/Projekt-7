@@ -73,10 +73,7 @@ const gamesDummy = [
 
 
 
-const getLogoLink = (team) =>{
-
-  return `/assets/icons/${team}Logo.svg`
-}
+const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 
 </script>
 
