@@ -35,7 +35,7 @@ h4{
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 25px;
+  font-size: 20px;
   margin: 0;
   color: #fff;
 
@@ -52,14 +52,14 @@ a{
   font-size: 20px;
   margin: 0;
   color: #fff;
-
+  text-decoration: none;
 
 }
 p{
   font-family: "Gilda Display", serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 20px;
+  font-size: 16px;
   margin: 0;
 
 }

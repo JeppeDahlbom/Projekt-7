@@ -23,18 +23,18 @@ onMounted(() => {
 
 <template>
     <div class="animation">
-      <img src="../assets/icons/OBLogo.svg" alt="">
+      <img src="/assets/icons/OBLogo.svg" alt="">
     </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
     <router-view />
   </main>
   <footer ref="footerRef">
-    <router-link to="/"><img src="../assets/icons/OBLogoTransparent.svg" alt=""><h3>Hjem</h3></router-link>
-    <router-link to="/season"><img src="../assets/icons/Season.svg" alt=""><h3>Sæson</h3></router-link>
-    <router-link to="/billetter"><img src="../assets/icons/Ticket.svg" alt=""><h3>Billet</h3></router-link>
-    <router-link to="/Sange"><img src="../assets/icons/Songs.svg" alt=""><h3>Sange</h3></router-link>
-    <router-link to="/Menu"><img src="../assets/icons/Menu.svg" alt=""><h3>Menu</h3></router-link>
+    <router-link to="/"><img src="/assets/icons/OBLogoTransparent.svg" alt=""><h3>Hjem</h3></router-link>
+    <router-link to="/season"><img src="/assets/icons/Season.svg" alt=""><h3>Sæson</h3></router-link>
+    <router-link to="/billetter"><img src="/assets/icons/Ticket.svg" alt=""><h3>Billet</h3></router-link>
+    <router-link to="/Sange"><img src="/assets/icons/Songs.svg" alt=""><h3>Sange</h3></router-link>
+    <router-link to="/Menu"><img src="/assets/icons/Menu.svg" alt=""><h3>Menu</h3></router-link>
   </footer>
 </template>
 

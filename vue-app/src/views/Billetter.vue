@@ -216,25 +216,24 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
   margin-bottom: 30px;
   }
   .buyBG h2 {
-font-size: 16px;
-flex-basis: 100%;
-color: black;
-font-weight: bold;
+    font-size: 16px;
+    flex-basis: 100%;
+    color: black;
   }
   .buyBG h3 {
-color: black;
-font-size: 15px;
-
-}
-.buyBG a {
-  background-color: var(--Blue); 
-  color: white;
-  padding: 10px 20px; 
-  border-radius: 5px; 
-  margin-left: auto;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
+    color: black;
+    font-size: 15px;
+    flex-basis: 100%;
+  }
+  .buyBG a {
+    background-color: var(--Blue); 
+    color: white;
+    padding: 4px 8px; 
+    border-radius: 8px;
+    margin-left: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 
   </style>

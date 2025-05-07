@@ -184,7 +184,6 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 }
 .newsSlider .CallToActionButton a{
   background-color: var(--Blue);
-  color: white;
   text-decoration: none;
   padding: 3px 7px;
   border-radius: 5px;
@@ -287,6 +286,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     padding: 3px 6px;
     margin-bottom: 15px;
     background-color: #fff;
+    color: var(--Blue);
     box-shadow: 0px 0px 3px 2px #00000080;
   }
   .gamesSlider .swiper-pagination-horizontal{
