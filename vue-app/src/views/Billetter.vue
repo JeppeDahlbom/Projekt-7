@@ -8,7 +8,7 @@ const gamesDummy = [
     stadionPosition:"to be added",
     dateTime:   new Date('2025-04-20T09:30:00'), // Før i dag, kl. 09:30
     result:[1,1],
-    league: "Super league",
+    league: "Super liga",
     matchID: 1
   },{
     home: "FCM",
@@ -17,7 +17,7 @@ const gamesDummy = [
     stadionPosition:"to be added",
     dateTime:   new Date('2025-05-02T08:00:00'), // Efter i dag, kl. 08:00
     result:[1,1],
-    league: "Super league",
+    league: "Super liga",
     matchID: 3
   },
   {
@@ -27,7 +27,7 @@ const gamesDummy = [
     stadionPosition:"to be added",
     dateTime:   new Date('2025-04-28T15:45:00'), // Før i dag, kl. 15:45
     result:[1,1],
-    league: "Super league",
+    league: "Super liga",
     matchID: 2
   },
   
@@ -38,7 +38,7 @@ const gamesDummy = [
     stadionPosition:"to be added",
     dateTime:   new Date('2025-05-10T18:15:00'), // Efter i dag, kl. 18:15
     result:[1,1],
-    league: "Super league",
+    league: "Super liga",
     matchID: 4
   }
 ];
@@ -60,7 +60,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
 
             </div>
             <div class="buyBG">
-              <h2 class="">{{ element.home }} v {{ element.away }}</h2>
+              <h3 class="">{{ element.home }} v {{ element.away }}</h3>
               <h3 class="">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }} - {{ element.stadion }}</h3>
               <a href="">Køb billet</a>
         
