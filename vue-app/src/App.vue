@@ -88,7 +88,7 @@ footer{
   background-color: white;
   display: flex;
   justify-content: space-evenly;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 footer a{
   text-transform: uppercase;
