@@ -8,7 +8,7 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "/assets/icons/OBLogoFarve.svg",
+        "src": "/OBLogoFarve.svg",
         "sizes": "512x512",
         "type": "image/svg+xml"
       }
