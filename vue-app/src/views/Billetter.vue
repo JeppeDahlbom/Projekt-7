@@ -3,14 +3,18 @@
 const gamesDummy = [
   {
     home: "OB",
-    away: "SIF",
+    away: "EFB",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-04-20T09:30:00'), // Før i dag, kl. 09:30
     result:[1,1],
     league: "Super league",
     matchID: 1
   },{
-    home: "BIF",
+    home: "FCM",
     away: "OB",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-05-02T08:00:00'), // Efter i dag, kl. 08:00
     result:[1,1],
     league: "Super league",
@@ -18,7 +22,9 @@ const gamesDummy = [
   },
   {
     home: "OB",
-    away: "VFF",
+    away: "ACH",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-04-28T15:45:00'), // Før i dag, kl. 15:45
     result:[1,1],
     league: "Super league",
@@ -26,30 +32,21 @@ const gamesDummy = [
   },
   
   {
-    home: "VFF",
+    home: "EFB",
     away: "OB",
+    stadion:"Nature energy park",
+    stadionPosition:"to be added",
     dateTime:   new Date('2025-05-10T18:15:00'), // Efter i dag, kl. 18:15
     result:[1,1],
     league: "Super league",
     matchID: 4
   }
 ];
-const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
+const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
 </script>
 <template>
     
 
-  <section class="ticket-card">
-    <div class="ticket-image">General kamp logo</div>
-    <div class="ticket-details">
-      <div>
-        <p><strong>Kamp title</strong></p>
-        <p>dato - lokation<br>Tidspunkt</p>
-        <p>Pris</p>
-      </div>
-      <button class="buy-button">Køb billet</button>
-    </div>
-  </section>
 
     <div class="background" v-for="element in gamesDummy">
                 <div class="container" >
@@ -61,6 +58,14 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
                     <img :src="getLogoLink(element.home)" alt="" class="home logoImg">
                     <img :src="getLogoLink(element.away)" alt="" class="away logoImg">
 
+            </div>
+            <div class="buyBG">
+              <h2 class="">{{ element.home }} v {{ element.away }}</h2>
+              <h3 class="">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }} - {{ element.stadion }}</h3>
+              <a href="">Køb billet</a>
+        
+
+              
             </div>
         </div>
   
@@ -80,7 +85,6 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   
   .container h3{
     text-align: center;
-    font-size: 20px;
     text-transform: uppercase;
     line-height: 1;
     display: inline-block
@@ -153,12 +157,15 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     background-image: url('/assets/images/ticketBG.svg');
     background-repeat: no-repeat;
     background-position: top;
-    background-size: contain;
+    background-size: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 0;
   }
-  .timeDate{
+  h3.timeDate{
     grid-area: dateTime;
-    font-size: 15px;
+    font-size: 12px;
    text-align: center;
+   margin-top: 8px;
   }
   .home{
     grid-area: home;
@@ -176,23 +183,58 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     margin-top: 0;
     padding: 5px 7px;
     border-radius: 0px 0px 10px 10px;
+    margin-bottom: 5px;
   }
   h3.awayName{
     grid-area: awayName;
-    font-size: 25px;
+    font-size: 18px;
   }
   h3.homeName{
     grid-area: homeName;
-    font-size: 25px;
+    font-size: 18px;
   }
+
   h3.v{
     grid-area: v;
     font-size: 12px;
+    margin: 7px auto;
     
   }
   .logoImg{
     margin: auto;
-    width: 70%;
+    width: 50%;
 
   }
+  .buyBG {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 10px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  }
+  .buyBG h2 {
+font-size: 16px;
+flex-basis: 100%;
+color: black;
+font-weight: bold;
+  }
+  .buyBG h3 {
+color: black;
+font-size: 15px;
+
+}
+.buyBG a {
+  background-color: var(--Blue); 
+  color: white;
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  margin-left: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
   </style>
