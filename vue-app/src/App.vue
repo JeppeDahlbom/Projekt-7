@@ -23,16 +23,18 @@ onMounted(() => {
 
 <template>
     <div class="animation">
-      <img src="/assets/icons/OBLogo.svg" alt="">
+      <img src="../assets/icons/OBLogo.svg" alt="">
     </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
     <router-view />
   </main>
   <footer ref="footerRef">
-    <router-link to="/">Forside</router-link> |
-    <router-link to="/billetter">Billetter</router-link>|
-    <router-link to="/Menu">Menu</router-link>
+    <router-link to="/"><img src="../assets/icons/OBLogoTransparent.svg" alt=""><h3>Hjem</h3></router-link>
+    <router-link to="/season"><img src="../assets/icons/Season.svg" alt=""><h3>Sæson</h3></router-link>
+    <router-link to="/billetter"><img src="../assets/icons/Ticket.svg" alt=""><h3>Billet</h3></router-link>
+    <router-link to="/Sange"><img src="../assets/icons/Songs.svg" alt=""><h3>Sange</h3></router-link>
+    <router-link to="/Menu"><img src="../assets/icons/Menu.svg" alt=""><h3>Menu</h3></router-link>
   </footer>
 </template>
 
@@ -41,9 +43,9 @@ onMounted(() => {
 header,footer{
   display: block;
   position: fixed;
-  width: calc(100% - 40px);
+  width: calc(100% - 20px);
   left: 0;
-  padding: 20px;
+  padding: 10px;
   background-color: var(--Blue);
   z-index: 100;
 }
@@ -53,12 +55,8 @@ header{
 header h1 {
   margin: 0;
 }
-footer{
-  bottom: 0;
-}
-footer a{
-  color: white;
-}
+
+
 
 .animation {
   display: block;
@@ -85,4 +83,27 @@ footer a{
   }
 }
 
+footer{
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+}
+footer a{
+  text-transform: uppercase;
+  color: var(--Blue);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer a img{
+  margin-bottom: 3px;
+  width: 25px;
+  height: 25px;
+}
+footer a h3, footer a h2{
+  font-size: 13px;
+  color: var(--Blue);
+}
 </style>

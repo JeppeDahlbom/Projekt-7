@@ -113,11 +113,11 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
         <div class="club" style="grid-area: home;">
           <img :src="getLogoLink(element.home)" alt="" />                    
         </div>
-        <h3 class="score" style="grid-area: homeScore;">{{ element.result[0] }}</h3>
+        <h2 class="score"  style="grid-area: homeScore;">  {{ element.dateTime < new Date() ? element.result[0] : '' }}</h2>
         <div class="club" style="grid-area: away;">
           <img :src="`/assets/icons/${element.away}Logo.svg`" alt="" />                    
         </div>
-        <h3 class="score" style="grid-area: awayScore;">{{ element.result[1] }}</h3>
+        <h2 class="score" style="grid-area: awayScore;">{{ element.dateTime < new Date() ? element.result[1] : '' }}</h2>
 
         <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
         <p class="location" style="grid-area: stadion;">{{ element.stadion.trim() }}</p>
@@ -172,12 +172,30 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   padding-bottom: 10px;
   padding-top: 10px;
 }
-  .newsSlider h3, .newsSlider p, .newsSlider a{
-      color: #fff;
-  }
-  .gamesSlider h3, .newsSlider p{
-    color: var(--Blue);
-  }
+.newsSlider h3, .newsSlider p, .newsSlider a{
+    color: #fff;
+}
+.gamesSlider h3{
+  color: var(--Blue);
+}
+.newsSlider p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.newsSlider .CallToActionButton a{
+  background-color: var(--Blue);
+  color: white;
+  text-decoration: none;
+  padding: 3px 7px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.newsSlider h3{
+  font-size: 30px;
+  font-weight: 700;
+}
+  
+  
   .titleMark{
       border-left: 6px solid; /* bredde styres her */
       border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
@@ -208,19 +226,32 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100% auto;
-    grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
     grid-template-areas:
       "home homeScore dateTime awayScore away"
-      "home . stadion . away"
-      "home . addCalendar . away";
+      "home homeScore stadion awayScore away"
+      "home homeScore addCalendar awayScore away";
+    padding: 5px;
+
     padding-bottom: 0px;
     padding-top: 20px;
+    background-color: white;
+  }
+  .gamesSlider swiper-container{
+    box-shadow: 0px 0px 7px 1px #00000044;
+    overflow: hidden;
+    border-radius: 12px;
 
+
+  }
+  .gamesSlider swiper-slide{
+    margin-bottom: 0;
   }
 
   .gamesSlider .club{
     width: 100%;
+    margin: auto;
+    margin-top: 5px;
   }
   .gamesSlider .club img{
     width: 100%;
@@ -234,6 +265,9 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   .gamesSlider .score{
     text-align: center;
     margin: auto;
+    font-weight: 700;
+    font-size: 30px;
+    margin-top: 5px;
   }
   .gamesSlider .time{
     font-size: 19px;
@@ -243,7 +277,9 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   .gamesSlider .location{
     font-size: 14px;
     text-align: center;
-    max-height: 20px;
+    margin-bottom: 30px;
+    color: var(--Blue);
+
   }
   .gamesSlider .addToCalendar{
     text-align: center;
