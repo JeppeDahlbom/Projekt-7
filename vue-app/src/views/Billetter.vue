@@ -82,6 +82,8 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     text-align: center;
     font-size: 20px;
     text-transform: uppercase;
+    line-height: 1;
+    display: inline-block
   }
   
 
@@ -140,7 +142,6 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   .background .container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
       "home liga away"
       "home homeName away"
@@ -162,7 +163,10 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   .home{
     grid-area: home;
   }
-  .liga{
+  .away{
+    grid-area: away;
+  }
+  h3.liga{
     grid-area: liga;
     font-size: 8px;
     background-color: white;
@@ -173,26 +177,22 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     padding: 5px 7px;
     border-radius: 0px 0px 10px 10px;
   }
-  .away{
-    grid-area: away;
-    
-  }
-  .awayName{
+  h3.awayName{
     grid-area: awayName;
     font-size: 25px;
   }
-  .homeName{
+  h3.homeName{
     grid-area: homeName;
     font-size: 25px;
-}
-.v{
-  grid-area: v;
-  font-size: 12px !important;
-  
-}
-.logoImg{
-  margin: auto;
-  width: 70%;
+  }
+  h3.v{
+    grid-area: v;
+    font-size: 12px;
+    
+  }
+  .logoImg{
+    margin: auto;
+    width: 70%;
 
-}
+  }
   </style>
