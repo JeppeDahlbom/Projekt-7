@@ -12,6 +12,47 @@ const mainRef = ref(null)
 
 
 onMounted(async () => {
+
+
+
+  // Håndtér video animation
+  const animationEl = document.getElementById('animationWrapper')
+  const video = animationEl?.querySelector('video')
+
+  if (video) {
+    video.addEventListener('canplaythrough', () => {
+      video.play().catch(() => {})
+      const duration = video.duration
+
+      // Start fade-out efter 80% af tiden
+      const fadeOutDelay = duration * 0.8 * 1000
+      setTimeout(() => {
+        animationEl.classList.add('fade-out')
+      }, fadeOutDelay)
+
+      // Fjern videoen helt lidt før slut
+      const hideDelay = (duration - 0.1) * 1000
+      setTimeout(() => {
+        animationEl.style.display = 'none'
+      }, hideDelay)
+    })
+
+    // Fallback hvis canplaythrough ikke trigges
+    setTimeout(() => {
+      animationEl.classList.add('fade-out')
+      setTimeout(() => {
+        animationEl.style.display = 'none'
+      }, 500)
+    }, 4000)
+  }
+
+
+
+
+
+
+
+
   setTimeout(() => {
     updateMargins()
   }, 100);
@@ -30,7 +71,7 @@ const updateMargins = () => {
 </script>
 
 <template>
-    <div class="animation">
+    <div id="animationWrapper" class="animation">
       <video src="/assets/video/loadingVideo.mp4" autoplay muted playsinline preload="auto">
 </video>    </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
@@ -68,7 +109,6 @@ header h1 {
 
 .animation {
   display: block;
-  animation: popIn 3.6s forwards;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -77,11 +117,15 @@ header h1 {
   left: 0;
   top: 0;
   background-color: var(--Blue);
-
+  transition: opacity 0.8s ease;
 }
 .animation video{
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+.animation.fade-out {
+  opacity: 0;
 }
 
 @keyframes popIn {
