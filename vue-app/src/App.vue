@@ -22,16 +22,15 @@ onMounted(async () => {
   if (video) {
     video.addEventListener('canplaythrough', () => {
       video.play().catch(() => {})
-      const duration = video.duration
+      const fadeOutDelay = video.duration * 0.7 * 1000
+      const hideDelay = (video.duration - 0.01) * 1000
 
-      // Start fade-out efter 80% af tiden
-      const fadeOutDelay = duration * 0.8 * 1000
+      // Start fade-out 
       setTimeout(() => {
         animationEl.classList.add('fade-out')
       }, fadeOutDelay)
 
       // Fjern videoen helt lidt før slut
-      const hideDelay = (duration - 0.1) * 1000
       setTimeout(() => {
         animationEl.style.display = 'none'
       }, hideDelay)
