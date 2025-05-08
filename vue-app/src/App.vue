@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
     <div class="animation">
-      <img src="/assets/icons/OBLogo.svg" alt="">
+      <video src="/assets/video/loadingVideo.mp4" autoplay muted playbackRate="0.8" preload="auto"></video>
     </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
@@ -60,25 +60,37 @@ header h1 {
 
 .animation {
   display: block;
-  animation: popIn 1s steps(1, end) forwards;
-  position: absolute;
+  animation: popIn 3.6s forwards;
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: 999;
   opacity: 1;
-  overflow: hidden;
   left: 0;
   top: 0;
   background-color: var(--Blue);
 
 }
-.animation img{
+.animation video{
   width: 100%;
+  height: 100%;
 }
 
 @keyframes popIn {
+  70% {
+    opacity: 100%;
+  }
+  
+  99% {
+    opacity: 0%;
+  }
 
+  99.9%{
+    opacity: 0%;
+    height: 100%;
+  }
   100% {
+    opacity: 0%;
     height: 0%;
   }
 }

@@ -195,14 +195,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 }
   
   
-  .titleMark{
-      border-left: 6px solid; /* bredde styres her */
-      border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
-      border-image-slice: 1;
-      padding-left: 20px; /* lidt afstand mellem kant og tekst */
-      font-size: 20px;
-      text-transform: uppercase;
-  }
+
   .swiperBackground, .backgroundCover{
       width: 100%;
       background-size: cover;
