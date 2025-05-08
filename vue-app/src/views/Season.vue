@@ -1,11 +1,11 @@
 <script setup>
-import playerBG from '../assets/images/player-bg.png'
-import bystandersBG from '../assets/images/bystanders-bg.png'
-import changeBG from '../assets/images/change-bg.png'
+import playerBG from '../assets/images/player-bg.jpg'
+import bystandersBG from '../assets/images/bystanders-bg.jpg'
+import changeBG from '../assets/images/change-bg.jpg'
 import matchBG from '../assets/images/match-bg.jpg'
 import squadBG from '../assets/images/squad-bg.jpg'
-import teamworkBG from '../assets/images/teamwork-bg.webp'
-import traningBG from '../assets/images/traning-bg.webp'
+import teamworkBG from '../assets/images/teamwork-bg.jpg'
+import traningBG from '../assets/images/traning-bg.jpg'
 
 const links = [
 {
@@ -55,6 +55,7 @@ const links = [
     width: 100%;
     height: 100px;
     position: relative;
+    border-radius: 5px;
   }
   .background {
     background-repeat: no-repeat;
@@ -68,7 +69,7 @@ const links = [
     bottom: 10px;
     left: 10px;
   }
-  .link + .link{
+  .link{
     margin: 10px;
   }
   </style>

@@ -146,6 +146,12 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     <h2 class="titleMark">Min profil</h2>
     <div>
       <div class="background">
+        <div class="badges">
+          <div>
+            <img src="/assets/icons/verifiedBadge.png" alt="">
+          </div>
+          <a href=""><h3>Se dine badges</h3></a>
+        </div>
         <h2>Odense</h2>
         <img src="/assets/images/myProfileBG.svg" alt="">
       </div>
@@ -157,8 +163,9 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   width: 100%;
 }
 .MyProfile .background h2{
-  font-size: 26vw;
+  font-size: 30vw;
   text-align: center;
+  text-transform: uppercase;
 }
 .OBMedia .container{
   display: flex;
