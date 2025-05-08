@@ -31,13 +31,7 @@ const updateMargins = () => {
 
 <template>
     <div class="animation">
-      <video
-  src="/assets/video/loadingVideo.mp4"
-  autoplay
-  muted
-  playsinline
-  preload="auto"
->
+      <video src="/assets/video/loadingVideo.mp4" autoplay muted playsinline preload="auto">
 </video>    </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
@@ -92,19 +86,19 @@ header h1 {
 
 @keyframes popIn {
   70% {
-    opacity: 100%;
+    opacity: 1;
   }
   
   99% {
-    opacity: 0%;
+    opacity: 0;
   }
 
   99.9%{
-    opacity: 0%;
+    opacity: 0;
     height: 100%;
   }
   100% {
-    opacity: 0%;
+    opacity: 0;
     height: 0%;
   }
 }

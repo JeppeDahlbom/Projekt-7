@@ -305,7 +305,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   }
   .gamesSlider .addToCalendar img{
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
   }
   .gamesSlider .swiper-pagination-horizontal{
