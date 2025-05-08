@@ -1,5 +1,5 @@
 <script setup>
-
+import heroImage from '../assets/images/heroImageBilletter.png'
 const gamesDummy = [
   {
     home: "OB",
@@ -45,9 +45,11 @@ const gamesDummy = [
 const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
 </script>
 <template>
+    <div class="hero-image">
+      <img :src="heroImage" alt="Stadionbillede"  />
+    </div>
+    <h2 class="titleMark">Kommende kampe</h2>
     
-
-
     <div class="background" v-for="element in gamesDummy">
                 <div class="container" >
                     <h3 class="liga">{{ element.league }}</h3>
@@ -77,11 +79,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
     box-sizing: border-box;
   }
   
-  body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: white;
-  }
+  
   
   .container h3{
     text-align: center;
@@ -235,5 +233,23 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
     bottom: 0;
     right: 0;
   }
+.hero-image{
+  width: calc(100% + 16px);
+  margin: 0px -8px;
+  margin-top: -1px;
+  margin-bottom: 15px;
+  border-radius: 0px 0px 5px 5px;
+  overflow: hidden;
+
+}
+
+  .hero-image img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+  
+  
 
   </style>
