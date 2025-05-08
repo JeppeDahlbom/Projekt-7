@@ -149,6 +149,8 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
         <div class="badges">
           <div>
             <img src="/assets/icons/verifiedBadge.png" alt="">
+            <img src="/assets/icons/verifiedBadge.png" alt="">
+
           </div>
           <a href=""><h3>Se dine badges</h3></a>
         </div>

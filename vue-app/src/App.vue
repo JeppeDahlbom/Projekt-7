@@ -31,7 +31,7 @@ const updateMargins = () => {
 
 <template>
     <div class="animation">
-      <video src="/assets/video/loadingVideo.mp4" autoplay muted playbackRate="0.8" preload="auto"></video>
+      <video src="/assets/video/loadingVideo.mp4" playsinline  autoplay muted playbackRate="0.8" preload="auto"></video>
     </div>
   <header ref="headerRef"><h1>{{ route.name }}</h1></header>
   <main ref="mainRef">
