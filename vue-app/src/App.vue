@@ -121,7 +121,6 @@ header h1 {
 .animation video{
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 .animation.fade-out {
   opacity: 0;
