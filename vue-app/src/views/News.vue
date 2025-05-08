@@ -4,6 +4,7 @@ import newsBG2 from '../assets/images/newsBG2.webp'
 import newsBG3 from '../assets/images/newsBG3.webp'
 import OBMedia from '../assets/images/OBMedia.png'
 import postIMG from '../assets/images/postIMG.png'
+import addCalendar from '../assets/icons/addCalendar.png'
 
 
 const newsDummy = [
@@ -121,7 +122,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 
         <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
         <p class="location" style="grid-area: stadion;">{{ element.stadion.trim() }}</p>
-        <a class="addToCalendar" style="grid-area: addCalendar;" href="">Add to Calendar</a>
+        <a class="addToCalendar" style="grid-area: addCalendar;" href=""><img :src="addCalendar" alt=""></a>
       </div>
     </swiper-slide>
   </swiper-container>
@@ -145,12 +146,20 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
     <h2 class="titleMark">Min profil</h2>
     <div>
       <div class="background">
-        <h3>Odense</h3>
+        <h2>Odense</h2>
+        <img src="/assets/images/myProfileBG.svg" alt="">
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+.MyProfile .background img{
+  width: 100%;
+}
+.MyProfile .background h2{
+  font-size: 26vw;
+  text-align: center;
+}
 .OBMedia .container{
   display: flex;
   flex-direction: row;
@@ -167,6 +176,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 .OBMedia .container a{
   margin: 10px 8px ;
 }
+
 
 .newsSlider, .gamesSlider, .OBMedia, .MyProfile{
   padding-bottom: 10px;
@@ -276,11 +286,18 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   .gamesSlider .addToCalendar{
     text-align: center;
     margin: auto;
-    padding: 3px 6px;
     margin-bottom: 15px;
     background-color: #fff;
     color: var(--Blue);
-    box-shadow: 0px 0px 3px 2px #00000080;
+    box-shadow: 0px 0px 6px 1px #00000060;
+    padding: 8px 12px;
+    height: 20px;
+    border-radius: 5px;
+  }
+  .gamesSlider .addToCalendar img{
+    display: block;
+    width: 100%;
+    height: 100%;
   }
   .gamesSlider .swiper-pagination-horizontal{
     position: absolute;

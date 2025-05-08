@@ -11,14 +11,22 @@ const mainRef = ref(null)
 
 
 
-onMounted(() => {
-  router.afterEach(async () => {
-    await nextTick() // Vent på at DOM og route.name er opdateret
-      mainRef.value.style.paddingTop = `${headerRef.value.offsetHeight + 10}px`;
-      mainRef.value.style.paddingBottom = `${footerRef.value.offsetHeight + 10}px`;
+onMounted(async () => {
+  setTimeout(() => {
+    updateMargins()
+  }, 100);
 
-  })
+  router.afterEach(async () => {
+    await nextTick()
+    updateMargins();
+  });
 });
+
+const updateMargins = () => {
+  mainRef.value.style.marginTop = `${headerRef.value.offsetHeight}px`;
+  mainRef.value.style.marginBottom = `${footerRef.value.offsetHeight}px`;
+}
+
 </script>
 
 <template>

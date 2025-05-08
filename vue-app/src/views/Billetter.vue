@@ -236,7 +236,6 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
 .hero-image{
   width: calc(100% + 16px);
   margin: 0px -8px;
-  margin-top: -1px;
   margin-bottom: 15px;
   border-radius: 0px 0px 5px 5px;
   overflow: hidden;
