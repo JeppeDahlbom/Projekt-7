@@ -144,7 +144,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   </div>
   <div class="MyProfile">
     <h2 class="titleMark">Min profil</h2>
-    <div>
+    <div class="container">
       <div class="background">
         <div class="badges">
           <div>
@@ -168,6 +168,20 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   font-size: 30vw;
   text-align: center;
   text-transform: uppercase;
+}
+.MyProfile .background .badges {
+height: 30px;
+}
+.MyProfile .background .badges div{
+  height: 100%;
+}
+.MyProfile .background .badges div img{
+  height: 100%;
+  width: auto;
+}
+.MyProfile .container{
+  margin: 10px;
+  width: calc(100% - 20px);
 }
 .OBMedia .container{
   display: flex;
