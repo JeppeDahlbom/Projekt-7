@@ -110,7 +110,8 @@ header h1 {
   display: block;
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   z-index: 999;
   opacity: 1;
   left: 0;
