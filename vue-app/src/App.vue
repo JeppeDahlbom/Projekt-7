@@ -70,13 +70,20 @@ const updateMargins = () => {
 </script>
 
 <template>
-    <div id="animationWrapper" class="animation">
-      <video src="/assets/video/loadingVideo.mp4" autoplay muted playsinline preload="auto">
-</video>    </div>
-  <header ref="headerRef"><h1>{{ route.name }}</h1></header>
+  <div id="animationWrapper" class="animation">
+    <video src="/assets/video/loadingVideo.mp4" autoplay muted playsinline preload="auto"></video>    
+  </div>
+
+  <header ref="headerRef">
+    <a class="logo" href=""><img src="/assets/icons/OBLogo.svg" alt=""></a>
+    <button class="settings"><img src="/assets/icons/Settings.svg" alt=""></button>
+    <h1 class="pageName">{{ route.name }}</h1>
+  </header>
+
   <main ref="mainRef">
     <router-view />
   </main>
+
   <footer ref="footerRef">
     <router-link to="/"><img src="/assets/icons/OBLogoTransparent.svg" alt=""><h3>Hjem</h3></router-link>
     <router-link to="/season"><img src="/assets/icons/Season.svg" alt=""><h3>Sæson</h3></router-link>
@@ -103,8 +110,40 @@ header{
 header h1 {
   margin: 0;
 }
+header{
+  display: grid;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% auto;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "logo . settings"
+      "pageName pageName pageName";
+}
+header *{
+  width: 100%;
+}
 
+header .logo{
+  grid-area: logo;
+}
+header .logo img{
+  display: block;
+}
 
+header .settings{
+  grid-area: settings;
+  background: none;
+  border: none;
+  padding: 0;
+}
+header .settings img{
+  display: block;
+}
+
+header .pageName{
+  grid-area: pageName;
+}
 
 .animation {
   display: block;
