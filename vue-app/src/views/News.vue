@@ -161,6 +161,28 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   </div>
 </template>
 <style scoped>
+.MyProfile .background .badges{
+  display: flex;
+  height: 36px;
+}
+
+.MyProfile .background .badges div{
+  height: 100%;
+}
+.MyProfile .background .badges div img{
+  height: 100%;
+  width: auto;
+}
+.MyProfile .background .badges a h3{
+  background-color: var(--Blue);
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+
+}
+.MyProfile .background .badges a{
+  margin-left: auto;
+}
 .MyProfile .background img{
   width: 100%;
 }
@@ -169,16 +191,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   text-align: center;
   text-transform: uppercase;
 }
-.MyProfile .background .badges {
-height: 30px;
-}
-.MyProfile .background .badges div{
-  height: 100%;
-}
-.MyProfile .background .badges div img{
-  height: 100%;
-  width: auto;
-}
+
 .MyProfile .container{
   margin: 10px;
   width: calc(100% - 20px);
