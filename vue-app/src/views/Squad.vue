@@ -1,6 +1,6 @@
 <script setup>
-
-const playersDummy = [
+import { ref, watch } from 'vue'
+let playersDummy = ref([
   {
     firstName: "Martin",
     lastName: "Hansen",
@@ -155,9 +155,28 @@ const playersDummy = [
     favourite: false,
     position: "Angriber"
   }
-];
+]);
+const stored = localStorage.getItem('localPlayersDummy');
+if(stored){
+  playersDummy.value = JSON.parse(stored);
+}
+
+// Toggle favourite
+const toggleFavourite = (player) => {
+  player.favourite = !player.favourite;
+  playersDummy.value.sort((a, b) => a.number - b.number);
+  playersDummy.value.sort((a, b) => {return (b.favourite === true) - (a.favourite === true);});
+  savePlayers();
+}
+const savePlayers = () => {
+  localStorage.setItem('localPlayersDummy', JSON.stringify(playersDummy.value));
+}
+
+watch(playersDummy, savePlayers, { deep: true });
+
 //sortere object listen
-playersDummy.sort((a, b) => a.number - b.number);
+playersDummy.value.sort((a, b) => a.number - b.number);
+playersDummy.value.sort((a, b) => {return (b.favourite === true) - (a.favourite === true);});
 
 </script>
 
@@ -165,11 +184,12 @@ playersDummy.sort((a, b) => a.number - b.number);
   <div class="background">
     <h2 class="titleMark">Målmand</h2>
     <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Målmand')">
-        <div class="text" >
-            <h2 class="number">#{{ player.number }}</h2>
-            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
-        </div>
-        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+      <div class="text" >
+          <h2 class="number">#{{ player.number }}</h2>
+          <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
+      </div>
+      <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
     </div>
 
     <h2 class="titleMark">Forsvarer</h2>
@@ -179,7 +199,8 @@ playersDummy.sort((a, b) => a.number - b.number);
             <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
         </div>
         <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
-    </div>
+      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
+      </div>
 
     <h2 class="titleMark">Midtbane</h2>
     <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Midtbane')">
@@ -188,7 +209,8 @@ playersDummy.sort((a, b) => a.number - b.number);
             <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
         </div>
         <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
-    </div>
+      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
+      </div>
 
     <h2 class="titleMark">Angriber</h2>
     <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Angriber')">
@@ -197,6 +219,7 @@ playersDummy.sort((a, b) => a.number - b.number);
             <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
         </div>
         <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
     </div>
   </div>
 </template>
@@ -207,11 +230,13 @@ playersDummy.sort((a, b) => a.number - b.number);
     flex-direction: column;
     gap: 20px;
     padding-bottom: 20px;
+    position: relative;
 }
 .background .playerCard{
+  position: relative;
    display: grid;
   
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-areas:
     "text image";
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
@@ -238,11 +263,25 @@ playersDummy.sort((a, b) => a.number - b.number);
 .background .playerCard .playerImage{
   grid-area: image;
   height: 180px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: -80px;
+}
+.background .playerCard .star{
+  background: none;
+  border: none;
+}
+.background .playerCard .star img{
+  display: block;
+  position: absolute;
+  width: 30px;
+  top: 10px;
+  right: 10px;
+  z-index: 9;
+}
+.background .playerCard .star:hover{
+  cursor: pointer;
 }
 .titleMark{
   margin-top: 20px;
 }
-
 </style>
