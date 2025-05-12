@@ -54,7 +54,7 @@ onMounted(async () => {
 
   setTimeout(() => {
     updateMargins()
-  }, 100);
+  }, 2000);
 
   router.afterEach(async () => {
     await nextTick()
