@@ -1,10 +1,10 @@
 <script setup>
-import newsBG1 from '@/assets/images/newsBG1.webp'
-import newsBG2 from '@/assets/images/newsBG2.webp'
-import newsBG3 from '@/assets/images/newsBG3.webp'
-import gamesBG from '@/assets/images/gamesBG.svg?url'
-import OBMedia from '@/assets/images/OBMedia.png'
-import postIMG from '@/assets/images/postIMG.png'
+import newsBG1 from '../assets/images/newsBG1.webp'
+import newsBG2 from '../assets/images/newsBG2.webp'
+import newsBG3 from '../assets/images/newsBG3.webp'
+import OBMedia from '../assets/images/OBMedia.png'
+import postIMG from '../assets/images/postIMG.png'
+import addCalendar from '../assets/icons/addCalendar.png'
 
 
 const newsDummy = [
@@ -71,14 +71,10 @@ const gamesDummy = [
   }
 ];
 
-// Opretter en ny stilregel og tilføjer den til dokumentets <style>-tag
 
 
-import OBLogo from '../assets/icons/OBLogo.svg'
-const getLogoLink = (team) =>{
 
-  return `src/assets/icons/${team}Logo.svg`
-}
+const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 
 </script>
 
@@ -91,7 +87,7 @@ const getLogoLink = (team) =>{
     scrollbar = "true"  
     slides-per-view = "1"
     space-between = "20"
-    loop = "false"
+    :loop = "false"
     >
       <swiper-slide v-for="element in newsDummy">
           <div class="swiperBackground" v-bind:style="{ backgroundImage: `url('${element.image}')` }">
@@ -110,23 +106,23 @@ const getLogoLink = (team) =>{
     grab-cursor = "true" 
     slides-per-view = "1"
     space-between = "20"
-    loop = "false"
+    :loop = "false"
     pagination = "true"
 > 
     <swiper-slide v-for="element in gamesDummy">
-      <div class="swiperContainer"   :style="{ backgroundImage: `url('${gamesBG}')` }">
+      <div class="swiperContainer" :style="{ backgroundImage: 'url(/assets/images/gamesBG.svg)' }">
         <div class="club" style="grid-area: home;">
           <img :src="getLogoLink(element.home)" alt="" />                    
         </div>
-        <h3 class="score" style="grid-area: homeScore;">{{ element.result[0] }}</h3>
+        <h2 class="score"  style="grid-area: homeScore;">  {{ element.dateTime < new Date() ? element.result[0] : '' }}</h2>
         <div class="club" style="grid-area: away;">
-          <img :src="`src/assets/icons/${element.away}Logo.svg`" alt="" />                    
+          <img :src="`/assets/icons/${element.away}Logo.svg`" alt="" />                    
         </div>
-        <h3 class="score" style="grid-area: awayScore;">{{ element.result[1] }}</h3>
+        <h2 class="score" style="grid-area: awayScore;">{{ element.dateTime < new Date() ? element.result[1] : '' }}</h2>
 
         <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
         <p class="location" style="grid-area: stadion;">{{ element.stadion.trim() }}</p>
-        <a class="addToCalendar" style="grid-area: addCalendar;" href="">Add to Calendar</a>
+        <a class="addToCalendar" style="grid-area: addCalendar;" href=""><img :src="addCalendar" alt=""></a>
       </div>
     </swiper-slide>
   </swiper-container>
@@ -147,12 +143,59 @@ const getLogoLink = (team) =>{
     </div>
   </div>
   <div class="MyProfile">
-    <div class="background">
-      <h3>Odense</h3>
+    <h2 class="titleMark">Min profil</h2>
+    <div class="container">
+      <div class="background">
+        <div class="badges">
+          <div>
+            <img src="/assets/icons/verifiedBadge.png" alt="">
+            <img src="/assets/icons/verifiedBadge.png" alt="">
+
+          </div>
+          <a href=""><h3>Se dine badges</h3></a>
+        </div>
+        <h2>Odense</h2>
+        <img src="/assets/images/myProfileBG.svg" alt="">
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+.MyProfile .background .badges{
+  display: flex;
+  height: 36px;
+}
+
+.MyProfile .background .badges div{
+  height: 100%;
+}
+.MyProfile .background .badges div img{
+  height: 100%;
+  width: auto;
+}
+.MyProfile .background .badges a h3{
+  background-color: var(--Blue);
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+
+}
+.MyProfile .background .badges a{
+  margin-left: auto;
+}
+.MyProfile .background img{
+  width: 100%;
+}
+.MyProfile .background h2{
+  font-size: 30vw;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.MyProfile .container{
+  margin: 10px;
+  width: calc(100% - 20px);
+}
 .OBMedia .container{
   display: flex;
   flex-direction: row;
@@ -170,23 +213,35 @@ const getLogoLink = (team) =>{
   margin: 10px 8px ;
 }
 
+
 .newsSlider, .gamesSlider, .OBMedia, .MyProfile{
   padding-bottom: 10px;
   padding-top: 10px;
 }
-  .newsSlider h3, .newsSlider p, .newsSlider a{
-      color: #fff;
-  }
-  .gamesSlider h3, .newsSlider p{
-    color: var(--Blue);
-  }
-  .titleMark{
-      border-left: 6px solid; /* bredde styres her */
-      border-image: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--Blue) 20%, var(--Blue) 80%,transparent 80%, transparent 100%);
-      border-image-slice: 1;
-      padding-left: 20px; /* lidt afstand mellem kant og tekst */
-      font-size: 20px;
-  }
+.newsSlider h3, .newsSlider p, .newsSlider a{
+    color: #fff;
+}
+.gamesSlider h3{
+  color: var(--Blue);
+}
+.newsSlider p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.newsSlider .CallToActionButton a{
+  background-color: var(--Blue);
+  text-decoration: none;
+  padding: 3px 7px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.newsSlider h3{
+  font-size: 30px;
+  font-weight: 700;
+}
+  
+  
+
   .swiperBackground, .backgroundCover{
       width: 100%;
       background-size: cover;
@@ -209,19 +264,32 @@ const getLogoLink = (team) =>{
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100% auto;
-    grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
     grid-template-areas:
       "home homeScore dateTime awayScore away"
-      "home . stadion . away"
-      "home . addCalendar . away";
+      "home homeScore stadion awayScore away"
+      "home homeScore addCalendar awayScore away";
+    padding: 5px;
+
     padding-bottom: 0px;
     padding-top: 20px;
+    background-color: white;
+  }
+  .gamesSlider swiper-container{
+    box-shadow: 0px 0px 7px 1px #00000044;
+    overflow: hidden;
+    border-radius: 12px;
 
+
+  }
+  .gamesSlider swiper-slide{
+    margin-bottom: 0;
   }
 
   .gamesSlider .club{
     width: 100%;
+    margin: auto;
+    margin-top: 5px;
   }
   .gamesSlider .club img{
     width: 100%;
@@ -235,6 +303,9 @@ const getLogoLink = (team) =>{
   .gamesSlider .score{
     text-align: center;
     margin: auto;
+    font-weight: 700;
+    font-size: 30px;
+    margin-top: 5px;
   }
   .gamesSlider .time{
     font-size: 19px;
@@ -244,15 +315,25 @@ const getLogoLink = (team) =>{
   .gamesSlider .location{
     font-size: 14px;
     text-align: center;
-    max-height: 20px;
+    margin-bottom: 30px;
+    color: var(--Blue);
+
   }
   .gamesSlider .addToCalendar{
     text-align: center;
     margin: auto;
-    padding: 3px 6px;
     margin-bottom: 15px;
     background-color: #fff;
-    box-shadow: 0px 0px 3px 2px #00000080;
+    color: var(--Blue);
+    box-shadow: 0px 0px 6px 1px #00000060;
+    padding: 8px 12px;
+    height: 20px;
+    border-radius: 5px;
+  }
+  .gamesSlider .addToCalendar img{
+    display: block;
+    width: auto;
+    height: 100%;
   }
   .gamesSlider .swiper-pagination-horizontal{
     position: absolute;

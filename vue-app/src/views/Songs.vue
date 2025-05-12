@@ -1,4 +1,6 @@
 <script setup>
+import heroImage from '../assets/images/heroImageSongs.png'
+
 let isListening = false;
 let audioContext, analyser, dataArray, bars;
 let stream;
@@ -48,6 +50,11 @@ function animate() {
 }
 </script>
 <template>
+  <div class="hero-image">
+      <img :src="heroImage" alt="Sangbogbilledet"  />
+    </div>
+    <h2 class="titleMark">Fang fans sange med AI</h2>
+
     <div class="sound-button" @click="toggleListening()">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -79,4 +86,17 @@ function animate() {
   border-radius: 3px;
   transition: height 0.1s ease-in-out;
 }
+.hero-image{
+  width: calc(100% + 16px);
+  margin: 0px -8px;
+  margin-bottom: 15px;
+  border-radius: 0px 0px 5px 5px;
+  overflow: hidden;
+}
+
+.hero-image img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;}
     </style>
