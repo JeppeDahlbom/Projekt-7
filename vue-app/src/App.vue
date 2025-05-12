@@ -145,6 +145,7 @@ header .settings img{
 
 header .pageName{
   grid-area: pageName;
+  text-transform: uppercase;
 }
 
 .animation {
