@@ -162,17 +162,43 @@ playersDummy.sort((a, b) => a.number - b.number);
 </script>
 
 <template>
-    <div class="background">
+  <div class="background">
     <h2 class="titleMark">Målmand</h2>
-        <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Målmand')">
-            <div class="" >
-                <h2 class="number">#{{ player.number }}</h2>
-                <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
-                <img :src="`/assets/images/holdet/${player.firstName.replace(' ', '')}${player.lastName.replace(' ', '')}.png`" alt="">
-            </div>
+    <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Målmand')">
+        <div class="text" >
+            <h2 class="number">#{{ player.number }}</h2>
+            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
+        </div>
+        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+    </div>
 
+    <h2 class="titleMark">Forsvarer</h2>
+    <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Forsvarer')">
+        <div class="text" >
+            <h2 class="number">#{{ player.number }}</h2>
+            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
         </div>
+        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+    </div>
+
+    <h2 class="titleMark">Midtbane</h2>
+    <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Midtbane')">
+        <div class="text" >
+            <h2 class="number">#{{ player.number }}</h2>
+            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
         </div>
+        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+    </div>
+
+    <h2 class="titleMark">Angriber</h2>
+    <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Angriber')">
+        <div class="text" >
+            <h2 class="number">#{{ player.number }}</h2>
+            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
+        </div>
+        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -180,17 +206,43 @@ playersDummy.sort((a, b) => a.number - b.number);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .background .playerCard{
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+   display: grid;
+  
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas:
+    "text image";
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  background-repeat: no-repeat;
+  background-position: 100% 130%;
+  background-size: 130% auto;
+  background-image: url('/assets/images/LightBGStripes.svg');
+  overflow: hidden;
+}
+.background .playerCard .text{
+  grid-area: text;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 .background .playerCard .number{
-    font-size: 30px;
+  font-size: 35px;
 }
 .background .playerCard .name{
-    font-size: 20px;
+  font-size: 20px;
 }
-
+.background .playerCard .playerImage{
+  grid-area: image;
+  height: 180px;
+  margin-top: 20px;
+  margin-bottom: -80px;
+}
+.titleMark{
+  margin-top: 20px;
+}
 
 </style>
