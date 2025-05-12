@@ -75,7 +75,7 @@ const updateMargins = () => {
   </div>
 
   <header ref="headerRef">
-    <a class="logo" href=""><img src="/assets/icons/OBLogo.svg" alt=""></a>
+    <router-link class="logo" to="/"><img src="/assets/icons/OBLogo.svg" alt=""></router-link>
     <button class="settings"><img src="/assets/icons/Settings.svg" alt=""></button>
     <h1 class="pageName">{{ route.name }}</h1>
   </header>

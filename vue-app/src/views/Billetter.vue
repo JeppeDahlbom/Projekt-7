@@ -45,31 +45,28 @@ const gamesDummy = [
 const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
 </script>
 <template>
-    <div class="hero-image">
-      <img :src="heroImage" alt="Stadionbillede"  />
-    </div>
-    <h2 class="titleMark">Kommende kampe</h2>
+  <div class="hero-image">
+    <img :src="heroImage" alt="Stadionbillede"  />
+  </div>
+  <h2 class="titleMark">Kommende kampe</h2>
     
-    <div class="background" v-for="element in gamesDummy">
-                <div class="container" >
-                    <h3 class="liga">{{ element.league }}</h3>
-                    <h3 class="homeName">{{ element.home }}</h3> 
-                    <h3 class="v">v</h3>
-                    <h3 class="awayName">{{ element.away }}</h3>
-                    <h3 class="timeDate" >{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
-                    <img :src="getLogoLink(element.home)" alt="" class="home logoImg">
-                    <img :src="getLogoLink(element.away)" alt="" class="away logoImg">
-
-            </div>
-            <div class="buyBG">
-              <h3 class="">{{ element.home }} v {{ element.away }}</h3>
-              <h3 class="">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }} - {{ element.stadion }}</h3>
-              <a href="">Køb billet</a>
-        
-
-              
-            </div>
-        </div>
+  <div class="background" v-for="element in gamesDummy">
+    <div class="container" >
+      <h3 class="liga">{{ element.league }}</h3>
+      <h3 class="homeName">{{ element.home }}</h3> 
+      <h3 class="v">vs</h3>
+      <h3 class="awayName">{{ element.away }}</h3>
+      <h3 class="timeDate" >{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
+      <img :src="getLogoLink(element.home)" alt="" class="home logoImg">
+      <img :src="getLogoLink(element.away)" alt="" class="away logoImg">
+    </div>
+    <div class="buyBG">
+      <h3 class="teams">{{ element.home }} - {{ element.away }}</h3>
+      <h3 class="dateLocation">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'long' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }}. {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.stadion }}</h3>
+      <h3 class="time">{{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
+      <a href="https://ob.eventii.dk/?utm_source=website&utm_medium=header_menu&utm_campaign=kob_billet">Køb billet</a>
+    </div>
+  </div>
   
 
 </template>
@@ -140,6 +137,16 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
     border: 1px solid #999;
     cursor: pointer;
   }
+  .background{
+    padding: 0px 5px 5px 5px;
+    box-shadow: 0px 2px 3px 0.5px rgba(0, 0, 0, 0.235);
+    margin-bottom: 15px;
+    background-image: url('/assets/images/3FSuperliga.svg');
+    background-repeat: no-repeat;
+    background-position: 80% 85%;
+    background-size: 65%;
+
+  }
 
   .background .container{
     display: grid;
@@ -163,7 +170,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
     grid-area: dateTime;
     font-size: 12px;
    text-align: center;
-   margin-top: 8px;
+   margin-top: 5px;
   }
   .home{
     grid-area: home;
@@ -211,18 +218,14 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
   position: relative;
   margin: 10px;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   }
   .buyBG h2 {
     font-size: 16px;
     flex-basis: 100%;
     color: black;
   }
-  .buyBG h3 {
-    color: black;
-    font-size: 15px;
-    flex-basis: 100%;
-  }
+
   .buyBG a {
     background-color: var(--Blue); 
     color: white;
@@ -232,6 +235,22 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
     position: absolute;
     bottom: 0;
     right: 0;
+  }
+  .buyBG h3 {
+    color: black;
+    flex-basis: 100%;
+
+  }
+  .buyBG .teams{
+    font-size: 25px;
+  }
+  .buyBG .dateLocation{
+    font-size: 15px;
+
+  }
+  .buyBG .time{
+    font-size: 15px;
+
   }
 .hero-image{
   width: calc(100% + 16px);
