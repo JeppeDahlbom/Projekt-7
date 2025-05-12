@@ -42,13 +42,14 @@ const links = [
 
 
 <template>
-<a class="link" v-for="element in links" :href=" element.link ">
+  <router-link v-for="element in links"  :to="element.link" class="link" >
     <div class="background" v-bind:style="{ backgroundImage: `url('${element.image}')`  }">
-                <div style="background-color: rgba(0, 0, 0, 0.1);">
-                    <h3>{{ element.title }}</h3>
-            </div>
-        </div></a>
-  </template>
+      <div style="background-color: rgba(0, 0, 0, 0.1);">
+        <h3>{{ element.title }}</h3>
+      </div>
+    </div>
+  </router-link>
+</template>
   
   <style scoped>
   .link,div{
