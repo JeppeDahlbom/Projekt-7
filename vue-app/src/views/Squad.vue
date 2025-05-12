@@ -165,7 +165,6 @@ if(stored){
 const toggleFavourite = (player) => {
   player.favourite = !player.favourite;
   playersDummy.value.sort((a, b) => a.number - b.number);
-  playersDummy.value.sort((a, b) => {return (b.favourite === true) - (a.favourite === true);});
   savePlayers();
 }
 const savePlayers = () => {
@@ -176,7 +175,6 @@ watch(playersDummy, savePlayers, { deep: true });
 
 //sortere object listen
 playersDummy.value.sort((a, b) => a.number - b.number);
-playersDummy.value.sort((a, b) => {return (b.favourite === true) - (a.favourite === true);});
 
 </script>
 
@@ -194,31 +192,31 @@ playersDummy.value.sort((a, b) => {return (b.favourite === true) - (a.favourite 
 
     <h2 class="titleMark">Forsvarer</h2>
     <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Forsvarer')">
-        <div class="text" >
-            <h2 class="number">#{{ player.number }}</h2>
-            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
-        </div>
-        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
-      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
+      <div class="text" >
+          <h2 class="number">#{{ player.number }}</h2>
+          <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
       </div>
+      <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
+    </div>
 
     <h2 class="titleMark">Midtbane</h2>
     <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Midtbane')">
-        <div class="text" >
-            <h2 class="number">#{{ player.number }}</h2>
-            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
-        </div>
-        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
-      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
+      <div class="text" >
+          <h2 class="number">#{{ player.number }}</h2>
+          <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
       </div>
+      <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+      <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
+    </div>
 
     <h2 class="titleMark">Angriber</h2>
     <div class="playerCard" v-for="player in playersDummy.filter(p => p.position === 'Angriber')">
-        <div class="text" >
-            <h2 class="number">#{{ player.number }}</h2>
-            <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
-        </div>
-        <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
+      <div class="text" >
+          <h2 class="number">#{{ player.number }}</h2>
+          <h2 class="name">{{ player.firstName }} {{ player.lastName }}</h2>
+      </div>
+      <img class="playerImage" :src="`/assets/images/holdet/${player.firstName.replaceAll(' ', '')}${player.lastName.replaceAll(' ', '')}.png`" alt="">
       <button @click="toggleFavourite(player)" class="star"><img :src="player.favourite ? '/assets/icons/StarIconFilled.svg' : '/assets/icons/StarIcon.svg'" alt=""></button>
     </div>
   </div>
