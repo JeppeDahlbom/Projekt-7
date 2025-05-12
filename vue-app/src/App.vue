@@ -136,6 +136,8 @@ header .settings{
   background: none;
   border: none;
   padding: 0;
+  width: 70%;
+  margin: auto;
 }
 header .settings img{
   display: block;
