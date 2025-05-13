@@ -63,8 +63,8 @@ let songsDummy = ref([
     progress: 0.0
   },
   {
-    title: "Fyn er fin",
-    duration: 130.0,
+    title: "Crazy Frog",
+    duration: 172.0,
     lyrics: "Fyn er fin og fyldt med mod,Vi kæmper med passion og blod",
     ID: 2,
     progress: 0.0
@@ -92,6 +92,22 @@ let songsDummy = ref([
   }
 ]);
 
+const updateProgress = (id) => {
+  document.getElementById('progressBar'+id).style.width = `${(document.getElementById('audioFile'+id).currentTime / document.getElementById('audioFile'+id).duration) * 100}%`;
+}
+
+const changeAudioState = (id) => {
+const audio = document.getElementById('audioFile'+id);
+if(audio.paused){
+document.getElementById('audioFile'+id).play();
+document.getElementById('playButton'+id).innerHTML = `<div style="font-size:80px; transform: rotate(90deg);  margin-top: -12px;  font-weight: bold;">=</div>`;
+
+}else{
+  document.getElementById('audioFile'+id).pause();
+  document.getElementById('playButton'+id).innerHTML = `<div style="transform: scaleX(0.8); padding-left: 8px;">&#9658;</div>`;
+
+}
+}
 
 
 </script>
@@ -118,16 +134,45 @@ let songsDummy = ref([
       <h2 class="title">{{ element.title }}</h2>
       <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
       <h3 class="lyrics">{{ element.lyrics }}</h3>
-        <button @click="togglePlay">{{ isPlaying ? 'Pause' : 'Play' }}</button>
-      <audio :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" controls></audio>
+      <button :id="'playButton' + element.ID" class="playButton" @click="changeAudioState(element.ID)">
+        <div style="transform: scaleX(0.8); padding-left: 8px;">&#9658;</div>
+      </button>
+      <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" controls @timeupdate="updateProgress(element.ID)"></audio>
+      
       <div class="audioProgressBG">
-        <div class="audioProgress" :style = "{ backgroundImage: 'url(/assets/images/gamesBG.svg)' }"></div>
+        <div :id="'progressBar' + element.ID" class="audioProgress" >
+          <div class="circle"></div>
+        </div>
       </div>
     </div>    
   </div>
 
 </template>
 <style scoped>
+  .audioProgressBG{
+  width: 100%;
+  height: 4px;
+  background-color: lightgray;
+  border-radius: 20px;
+  }
+  .audioProgress{
+    width: 0%;
+  height: 100%;
+  background-color: var(--Blue);
+  border-radius: 20px;
+  align-items: center;
+  display: flex;
+  margin-right: auto;
+  }
+  .circle{
+    margin-left: auto;
+    margin-right: 0;
+    height: 12px;
+    width: 12px;
+    min-width: 12px;
+    border-radius: 10px;
+    background: var(--Blue);
+  }
   .sound-button {
     background-color: var(--Blue);
     border-radius: 50%;
@@ -139,6 +184,19 @@ let songsDummy = ref([
     gap: 4px;
     cursor: pointer;
     margin: auto;
+  }
+  .playButton{
+    background-color: var(--Blue);
+    border: none;
+    border-radius: 150px;
+    height: 70px;
+    width: 70px;
+    color: white;
+    font-size: 60px;
+    cursor: pointer;
+  }
+
+  .playButton .pause{
   }
 
   .bar {
