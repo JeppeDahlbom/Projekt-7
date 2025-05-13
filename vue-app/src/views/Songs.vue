@@ -56,31 +56,31 @@ const songsDummy = [
   {
     title: "Store stolte Odense",
     duration: 120.0,
-    lyrics: "Stolte Odense, Store stolte Odense, <br>Vi slås for din ære,<br> <br>Vi kæmper for dit na-a-avn <br> ",
+    lyrics: "Stolte Odense, Store stolte Odense, Vi slås for din ære, Vi kæmper for dit na-a-avn ",
     ID: 1
   },
   {
     title: "Fyn er fin",
     duration: 130.0,
-    lyrics: "Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>",
+    lyrics: "Fyn er fin og fyldt med mod,Vi kæmper med passion og blod",
     ID: 2
   },
   {
     title: "Vi står sammen",
     duration: 105.0,
-    lyrics: "Vi står sammen, vi står stærkt,<br>Odense kæmper – altid ærligt<br>",
+    lyrics: "Vi står sammen, vi står stærkt,Odense kæmper  altid ærligt",
     ID: 3
   },
   {
     title: "Hjemmebanehelte",
     duration: 90.0,
-    lyrics: "Hjemmebanehelte, vores OB,<br>Vi synger højt, vi gir' aldrig op<br>",
+    lyrics: "Hjemmebanehelte, vores OB,Vi synger højt, vi gir' aldrig op",
     ID: 4
   },
   {
     title: "Blå og hvid",
     duration: 100.0,
-    lyrics: "Blå og hvid i hjertet bor,<br>OB vi elsker dig – i med- og modvind stor<br>",
+    lyrics: "Blå og hvid i hjertet bor,OB vi elsker dig i med og modvind stor",
     ID: 5
   }
 ];
@@ -108,8 +108,8 @@ const songsDummy = [
 
     <div class="background" v-for="element in songsDummy">
                 <div class="container" >
-                    <h3 class="titel">{{ element.title }}</h3>
-                    <h3 class="duration">{{ element.duration }}</h3> 
+                    <h2 class="title">{{ element.title }}</h2>
+                    <p class="duration">{{ Math.floor(element.duration/60) }}:{{element.duration-(Math.floor(element.duration/60)*60) }}</p> 
                     <h3 class="lyrics">{{ element.lyrics }}</h3>
   
 
@@ -121,7 +121,7 @@ const songsDummy = [
 </template>
     <style scoped>
         .sound-button {
-  background-color: #1449ff;
+  background-color: var(--Blue);
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -155,5 +155,21 @@ const songsDummy = [
   display: block;
   object-fit: cover;}
   
+.title{
+  color: var(--Blue);
+  text-transform: uppercase;
+}
   
+.duration{
+  color: var(--Blue);
+ 
+}
+
+
+.background {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 5px;
+}
     </style>
