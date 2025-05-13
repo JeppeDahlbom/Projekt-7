@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import newsBG1 from '../assets/images/newsBG1.webp'
 import newsBG2 from '../assets/images/newsBG2.webp'
 import newsBG3 from '../assets/images/newsBG3.webp'
@@ -71,6 +72,12 @@ const gamesDummy = [
   }
 ];
 
+
+const stored = localStorage.getItem('localPlayersDummy');
+const players = ref([]);
+if(stored){
+  players.value = JSON.parse(stored);
+}
 
 
 
@@ -157,6 +164,12 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
         <h2>Odense</h2>
         <img src="/assets/images/myProfileBG.svg" alt="">
       </div>
+      <div class="foreground">
+        <div class="shirt">
+          <h2>Gustavo</h2>
+          <h2>8</h2>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -195,7 +208,16 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 .MyProfile .container{
   margin: 10px;
   width: calc(100% - 20px);
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "stack";
 }
+.MyProfile .background, .MyProfile .foreground{
+  grid-area: stack;
+}
+
 .OBMedia .container{
   display: flex;
   flex-direction: row;

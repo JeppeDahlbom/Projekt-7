@@ -109,7 +109,7 @@ const songsDummy = [
     <div class="background" v-for="element in songsDummy">
                 <div class="container" >
                     <h2 class="title">{{ element.title }}</h2>
-                    <p class="duration">{{ Math.floor(element.duration/60) }}:{{element.duration-(Math.floor(element.duration/60)*60) }}</p> 
+                    <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
                     <h3 class="lyrics">{{ element.lyrics }}</h3>
   
 

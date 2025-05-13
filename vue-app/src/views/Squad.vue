@@ -161,10 +161,13 @@ if(stored){
   playersDummy.value = JSON.parse(stored);
 }
 
+
 // Toggle favourite
 const toggleFavourite = (player) => {
-  player.favourite = !player.favourite;
-  playersDummy.value.sort((a, b) => a.number - b.number);
+  playersDummy.value.forEach(element => {
+    element.favourite = false;
+  });
+  player.favourite = true;
   savePlayers();
 }
 const savePlayers = () => {
