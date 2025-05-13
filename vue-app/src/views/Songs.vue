@@ -196,9 +196,6 @@ document.getElementById('playButton'+id).innerHTML = `<div style="font-size:80px
     cursor: pointer;
   }
 
-  .playButton .pause{
-  }
-
   .bar {
     width: 6px;
     height: 20px;
