@@ -125,7 +125,7 @@ document.getElementById('playButton'+id).innerHTML = `<div style="font-size:80px
     <div class="bar"></div>
     <div class="bar"></div>
     <div class="bar"></div>
-  </div>
+  </div> 
 
   <h2 class="titleMark">Sange på tribunen</h2>
 
