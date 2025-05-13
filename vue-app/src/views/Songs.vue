@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue'
+
 import heroImage from '../assets/images/heroImageSongs.png'
 
 let isListening = false;
@@ -52,7 +54,7 @@ function animate() {
 
 
 
-const songsDummy = [
+let songsDummy = ref([
   {
     title: "Store stolte Odense",
     duration: 120.0,
@@ -83,93 +85,91 @@ const songsDummy = [
     lyrics: "Blå og hvid i hjertet bor,OB vi elsker dig i med og modvind stor",
     ID: 5
   }
-];
+]);
 
 
 
 </script>
 <template>
   <div class="hero-image">
-      <img :src="heroImage" alt="Sangbogbilledet"  />
-    </div>
-    <h2 class="titleMark">Fang fans sange med AI</h2>
+    <img :src="heroImage" alt="Sangbogbilledet"  />
+  </div>
+  <h2 class="titleMark">Fang fans sange med AI</h2>
 
-    <div class="sound-button" @click="toggleListening()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
+  <div class="sound-button" @click="toggleListening()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
 
-    <h2 class="titleMark">Sange på tribunen</h2>
+  <h2 class="titleMark">Sange på tribunen</h2>
 
-    <div class="background" v-for="element in songsDummy">
-                <div class="container" >
-                    <h2 class="title">{{ element.title }}</h2>
-                    <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
-                    <h3 class="lyrics">{{ element.lyrics }}</h3>
-  
-
-            </div>
-          
-            
-        </div>
+  <div class="background" v-for="element in songsDummy">
+    <div class="container" >
+      <h2 class="title">{{ element.title }}</h2>
+      <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
+      <h3 class="lyrics">{{ element.lyrics }}</h3>
+        <button @click="togglePlay">{{ isPlaying ? 'Pause' : 'Play' }}</button>
+      <audio :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" controls></audio>
+    </div>    
+  </div>
 
 </template>
-    <style scoped>
-        .sound-button {
-  background-color: var(--Blue);
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  cursor: pointer;
-  margin: auto;
-}
+<style scoped>
+  .sound-button {
+    background-color: var(--Blue);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    margin: auto;
+  }
 
-.bar {
-  width: 6px;
-  height: 20px;
-  background-color: white;
-  border-radius: 3px;
-  transition: height 0.1s ease-in-out;
-}
-.hero-image{
-  width: calc(100% + 16px);
-  margin: 0px -8px;
-  margin-bottom: 15px;
-  margin-top: -1px;
-  border-radius: 0px 0px 5px 5px;
-  overflow: hidden;
-}
+  .bar {
+    width: 6px;
+    height: 20px;
+    background-color: white;
+    border-radius: 3px;
+    transition: height 0.1s ease-in-out;
+  }
+  .hero-image{
+    width: calc(100% + 16px);
+    margin: 0px -8px;
+    margin-bottom: 15px;
+    margin-top: -1px;
+    border-radius: 0px 0px 5px 5px;
+    overflow: hidden;
+  }
 
-.hero-image img{
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;}
+  .hero-image img{
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;}
+    
+  .title{
+    color: var(--Blue);
+    text-transform: uppercase;
+  }
+    
+  .duration{
+    color: var(--Blue);
   
-.title{
-  color: var(--Blue);
-  text-transform: uppercase;
-}
-  
-.duration{
-  color: var(--Blue);
- 
-}
+  }
 
 
-.background {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  margin-top: 10px;
-  padding: 5px;
-}
-    </style>
+  .background {
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding: 5px;
+  }
+</style>

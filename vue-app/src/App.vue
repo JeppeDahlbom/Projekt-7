@@ -16,33 +16,33 @@ onMounted(async () => {
 
 
   // Håndtér video animation
-  const animationEl = document.getElementById('animationWrapper')
-  const video = animationEl?.querySelector('video')
+  const animationEl = document.getElementById('animationWrapper');
+  const video = animationEl?.querySelector('video');
 
   if (video) {
     video.addEventListener('canplaythrough', () => {
-      video.play().catch(() => {})
-      const fadeOutDelay = video.duration * 0.7 * 1000
-      const hideDelay = (video.duration - 0.01) * 1000
+      video.play().catch(() => {});
+      const fadeOutDelay = video.duration * 0.7 * 1000;
+      const hideDelay = (video.duration - 0.01) * 1000;
 
       // Start fade-out 
       setTimeout(() => {
-        animationEl.classList.add('fade-out')
-      }, fadeOutDelay)
+        animationEl.classList.add('fade-out');
+      }, fadeOutDelay);
 
       // Fjern videoen helt lidt før slut
       setTimeout(() => {
-        animationEl.style.display = 'none'
-      }, hideDelay)
+        animationEl.style.display = 'none';
+      }, hideDelay);
     })
 
     // Fallback hvis canplaythrough ikke trigges
     setTimeout(() => {
-      animationEl.classList.add('fade-out')
+      animationEl.classList.add('fade-out');
       setTimeout(() => {
-        animationEl.style.display = 'none'
-      }, 500)
-    }, 4000)
+        animationEl.style.display = 'none';
+      }, 500);
+    }, 4000);
   }
 
 
