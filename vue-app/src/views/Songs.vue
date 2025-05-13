@@ -59,31 +59,36 @@ let songsDummy = ref([
     title: "Store stolte Odense",
     duration: 120.0,
     lyrics: "Stolte Odense, Store stolte Odense, Vi slås for din ære, Vi kæmper for dit na-a-avn ",
-    ID: 1
+    ID: 1,
+    progress: 0.0
   },
   {
     title: "Fyn er fin",
     duration: 130.0,
     lyrics: "Fyn er fin og fyldt med mod,Vi kæmper med passion og blod",
-    ID: 2
+    ID: 2,
+    progress: 0.0
   },
   {
     title: "Vi står sammen",
     duration: 105.0,
     lyrics: "Vi står sammen, vi står stærkt,Odense kæmper  altid ærligt",
-    ID: 3
+    ID: 3,
+    progress: 0.0
   },
   {
     title: "Hjemmebanehelte",
     duration: 90.0,
     lyrics: "Hjemmebanehelte, vores OB,Vi synger højt, vi gir' aldrig op",
-    ID: 4
+    ID: 4,
+    progress: 0.0
   },
   {
     title: "Blå og hvid",
     duration: 100.0,
     lyrics: "Blå og hvid i hjertet bor,OB vi elsker dig i med og modvind stor",
-    ID: 5
+    ID: 5,
+    progress: 0.0
   }
 ]);
 
@@ -115,6 +120,9 @@ let songsDummy = ref([
       <h3 class="lyrics">{{ element.lyrics }}</h3>
         <button @click="togglePlay">{{ isPlaying ? 'Pause' : 'Play' }}</button>
       <audio :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" controls></audio>
+      <div class="audioProgressBG">
+        <div class="audioProgress" :style = "{ backgroundImage: 'url(/assets/images/gamesBG.svg)' }"></div>
+      </div>
     </div>    
   </div>
 
