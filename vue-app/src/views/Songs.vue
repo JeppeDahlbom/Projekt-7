@@ -60,35 +60,40 @@ let songsDummy = ref([
     duration: 120.0,
     lyrics: "Stolte Odense, Store stolte Odense, Vi slås for din ære, Vi kæmper for dit na-a-avn ",
     ID: 1,
-    progress: 0.0
+    progress: 0.0,
+    playing:false
   },
   {
     title: "Crazy Frog",
     duration: 172.0,
     lyrics: "Fyn er fin og fyldt med mod,Vi kæmper med passion og blod",
     ID: 2,
-    progress: 0.0
+    progress: 0.0,
+    playing:false
   },
   {
     title: "Vi står sammen",
     duration: 105.0,
     lyrics: "Vi står sammen, vi står stærkt,Odense kæmper  altid ærligt",
     ID: 3,
-    progress: 0.0
+    progress: 0.0,
+    playing:false
   },
   {
     title: "Hjemmebanehelte",
     duration: 90.0,
     lyrics: "Hjemmebanehelte, vores OB,Vi synger højt, vi gir' aldrig op",
     ID: 4,
-    progress: 0.0
+    progress: 0.0,
+    playing:false
   },
   {
     title: "Blå og hvid",
     duration: 100.0,
     lyrics: "Blå og hvid i hjertet bor,OB vi elsker dig i med og modvind stor",
     ID: 5,
-    progress: 0.0
+    progress: 0.0,
+    playing:false
   }
 ]);
 
@@ -99,13 +104,11 @@ const updateProgress = (id) => {
 const changeAudioState = (id) => {
 const audio = document.getElementById('audioFile'+id);
 if(audio.paused){
-document.getElementById('audioFile'+id).play();
-document.getElementById('playButton'+id).innerHTML = `<div style="font-size:80px; transform: rotate(90deg);  margin-top: -12px;  font-weight: bold;">=</div>`;
-
+  audio.play();
+  songsDummy.value.find((song) => {return song.ID === id}).playing = !songsDummy.value.find((song) => {return song.ID === id}).playing;
 }else{
-  document.getElementById('audioFile'+id).pause();
-  document.getElementById('playButton'+id).innerHTML = `<div style="transform: scaleX(0.8); padding-left: 8px;">&#9658;</div>`;
-
+  audio.pause();
+  songsDummy.value.find((song) => {return song.ID === id}).playing = !songsDummy.value.find((song) => {return song.ID === id}).playing;
 }
 }
 
@@ -135,7 +138,8 @@ document.getElementById('playButton'+id).innerHTML = `<div style="font-size:80px
       <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
       <h3 class="lyrics">{{ element.lyrics }}</h3>
       <button :id="'playButton' + element.ID" class="playButton" @click="changeAudioState(element.ID)">
-        <div style="transform: scaleX(0.8); padding-left: 8px;">&#9658;</div>
+        <div v-if="!element.playing" class="play">&#9658;</div>
+        <div v-else-if="element.playing" class="pause">=</div>
       </button>
       <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" controls @timeupdate="updateProgress(element.ID)"></audio>
       
@@ -191,9 +195,29 @@ document.getElementById('playButton'+id).innerHTML = `<div style="font-size:80px
     border-radius: 150px;
     height: 70px;
     width: 70px;
-    color: white;
-    font-size: 60px;
     cursor: pointer;
+    position: relative;
+  }
+  .playButton div{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: white;
+
+  }
+
+  .playButton .play{
+    font-size: 60px;
+  }
+
+  .playButton .pause{
+    font-size: 70px;
+    transform: rotate(90deg);
+    top: -16%;
+  left: 10%;
   }
 
   .bar {

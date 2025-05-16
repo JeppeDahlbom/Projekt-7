@@ -148,6 +148,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
         </a>
       </div>
     </div>
+    <video src="/assets/video/interview.mp4" style="width: 50%;" controls ></video>
   </div>
   <div class="MyProfile">
     <h2 class="titleMark">Min profil</h2>
