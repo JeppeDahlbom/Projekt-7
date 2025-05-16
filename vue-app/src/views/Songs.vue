@@ -57,7 +57,7 @@ function animate() {
 let songsDummy = ref([
   {
     title: "Store stolte Odense",
-    duration: 120.0,
+    duration: 58.0,
     lyrics: "Stolte Odense, Store stolte Odense, Vi slås for din ære, Vi kæmper for dit na-a-avn ",
     ID: 1,
     progress: 0.0,
@@ -80,7 +80,7 @@ let songsDummy = ref([
     playing:false
   },
   {
-    title: "Hjemmebanehelte",
+    title: "Hjemmebane helte",
     duration: 90.0,
     lyrics: "Hjemmebanehelte, vores OB,Vi synger højt, vi gir' aldrig op",
     ID: 4,
@@ -105,11 +105,15 @@ const changeAudioState = (id) => {
 const audio = document.getElementById('audioFile'+id);
 if(audio.paused){
   audio.play();
-  songsDummy.value.find((song) => {return song.ID === id}).playing = !songsDummy.value.find((song) => {return song.ID === id}).playing;
+  songsDummy.value.find((song) => {return song.ID === id}).playing = true;
 }else{
   audio.pause();
-  songsDummy.value.find((song) => {return song.ID === id}).playing = !songsDummy.value.find((song) => {return song.ID === id}).playing;
+  songsDummy.value.find((song) => {return song.ID === id}).playing = false;
 }
+}
+
+const audioEnded = (id) => {
+  songsDummy.value.find((song) => {return song.ID === id}).playing = false;
 }
 
 
@@ -135,17 +139,45 @@ if(audio.paused){
   <div class="background" v-for="element in songsDummy">
     <div class="container" >
       <h2 class="title">{{ element.title }}</h2>
-      <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
-      <h3 class="lyrics">{{ element.lyrics }}</h3>
+
+      <h3 class="lyrics" style=" display: none;">{{ element.lyrics }}</h3>
       <button :id="'playButton' + element.ID" class="playButton" @click="changeAudioState(element.ID)">
-        <div v-if="!element.playing" class="play">&#9658;</div>
-        <div v-else-if="element.playing" class="pause">=</div>
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon v-if="!element.playing" points="28,10 28,90 95,50" stroke="none" />
+          <line v-if="element.playing" x1="32" y1="25" x2="32" y2="75"/>
+          <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
+        </svg>
       </button>
-      <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" controls @timeupdate="updateProgress(element.ID)"></audio>
-      
-      <div class="audioProgressBG">
-        <div :id="'progressBar' + element.ID" class="audioProgress" >
-          <div class="circle"></div>
+      <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" @timeupdate="updateProgress(element.ID)"   @ended="audioEnded(element.ID)"></audio>
+
+      <svg class="banner" viewBox="0 0 100 210" xmlns="http://www.w3.org/2000/svg">
+        <!-- Venstre kolonne -->
+        <rect x="0" y="-10" width="20" height="20"/>
+        <rect x="0" y="20" width="20" height="20"/>
+        <rect x="0" y="50" width="20" height="20"/>
+        <rect x="0" y="80" width="20" height="20"/>
+        <rect x="0" y="110" width="20" height="20"/>
+        <rect x="0" y="140" width="20" height="20"/>
+        <rect x="0" y="170" width="20" height="20"/>
+        <rect x="0" y="200" width="20" height="20"/>
+
+
+        <!-- Højre kolonne -->
+        <rect x="20" y="5" width="70" height="20"/>
+        <rect x="20" y="35" width="70" height="20"/>
+        <rect x="20" y="65" width="70" height="20"/>
+        <rect x="20" y="95" width="70" height="20"/>
+        <rect x="20" y="125" width="70" height="20"/>
+        <rect x="20" y="155" width="70" height="20"/>
+        <rect x="20" y="185" width="70" height="20"/>
+
+      </svg>
+      <div class="progress">
+        <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
+        <div class="audioProgressBG">
+          <div :id="'progressBar' + element.ID" class="audioProgress" >
+            <div class="circle"></div>
+          </div>
         </div>
       </div>
     </div>    
@@ -153,14 +185,50 @@ if(audio.paused){
 
 </template>
 <style scoped>
-  .audioProgressBG{
+  .background .container{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 90px auto 90px;
+    grid-template-areas:
+      "banner title play"
+      "banner progress play";
+      gap: 0;
+      overflow: hidden;
+      position: relative;
+  }
+  .background .container .banner{
+    grid-area: banner;
+    display: block;
+    height: auto;
+    width: 90px;
+    fill: var(--Blue);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .background .container .progress{
+  grid-area: progress;
+  padding-bottom: 10px;
+  }
+  .background .container .progress .duration{
+    display: block;
+    margin-left: auto;
+    width: min-content;
+    color: var(--Blue);
+
+  }
+
+  .background .container .progress .audioProgressBG{
   width: 100%;
   height: 4px;
   background-color: lightgray;
   border-radius: 20px;
   }
-  .audioProgress{
-    width: 0%;
+
+  .background .container .progress .audioProgress{
+  width: 0%;
   height: 100%;
   background-color: var(--Blue);
   border-radius: 20px;
@@ -190,6 +258,7 @@ if(audio.paused){
     margin: auto;
   }
   .playButton{
+    grid-area: play;
     background-color: var(--Blue);
     border: none;
     border-radius: 150px;
@@ -197,27 +266,22 @@ if(audio.paused){
     width: 70px;
     cursor: pointer;
     position: relative;
+    margin: auto;
+    padding: 0;
   }
-  .playButton div{
+  .playButton svg{
+    fill: white;
+    stroke: white;
+    width: 80%;
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: bold;
-    color: white;
+    stroke-width: 25; /* Juster tykkelsen */
+    stroke-linecap: round; /* Afrundede ender */
 
-  }
 
-  .playButton .play{
-    font-size: 60px;
-  }
-
-  .playButton .pause{
-    font-size: 70px;
-    transform: rotate(90deg);
-    top: -16%;
-  left: 10%;
   }
 
   .bar {
@@ -242,21 +306,28 @@ if(audio.paused){
     display: block;
     object-fit: cover;}
     
-  .title{
+  .background .title{
+    grid-area: title;
     color: var(--Blue);
     text-transform: uppercase;
+    padding-top: 5px;
+    font-size: 25px;
+    min-height: 3em;
+    width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
     
-  .duration{
-    color: var(--Blue);
-  
-  }
+
 
 
   .background {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
     margin-top: 10px;
-    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
   }
 </style>
