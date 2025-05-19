@@ -7,7 +7,6 @@ const router = useRouter()
 const headerRef = ref(null)
 const footerRef = ref(null)
 
-const mainRef = ref(null)
 
 
 
@@ -63,8 +62,8 @@ onMounted(async () => {
 });
 
 const updateMargins = () => {
-  mainRef.value.style.marginTop = `${headerRef.value.offsetHeight}px`;
-  mainRef.value.style.marginBottom = `${footerRef.value.offsetHeight}px`;
+  document.documentElement.style.setProperty('--headerHeight', `${headerRef.value.offsetHeight}px`);
+  document.documentElement.style.setProperty('--footerHeight', `${footerRef.value.offsetHeight+10}px`);
 }
 
 </script>
@@ -80,7 +79,7 @@ const updateMargins = () => {
     <h1 class="pageName">{{ route.name }}</h1>
   </header>
 
-  <main ref="mainRef">
+  <main>
     <router-view />
   </main>
 
@@ -95,6 +94,14 @@ const updateMargins = () => {
 
 
 <style>
+:root{
+  --headerHeight: 0px;
+  --footerHeight: 0px;
+}
+main{
+  margin-top: var(--headerHeight);
+  margin-bottom: var(--footerHeight);
+}
 header,footer{
   display: block;
   position: fixed;

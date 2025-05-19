@@ -115,9 +115,21 @@ if(audio.paused){
 const audioEnded = (id) => {
   songsDummy.value.find((song) => {return song.ID === id}).playing = false;
 }
+let hideElements = ref(false);
+const showLyrics = (id) => {
+  const lyrics = document.getElementById('lyrics'+id);
+  if(lyrics.style.display == 'none'){
+    lyrics.style.display = 'block';
+      hideElements.value = true;
+  }else{
+    lyrics.style.display = 'none';
+    hideElements.value = false;
+  }
+}
 
 
 </script>
+
 <template>
   <div class="hero-image">
     <img :src="heroImage" alt="Sangbogbilledet"  />
@@ -137,7 +149,7 @@ const audioEnded = (id) => {
   <h2 class="titleMark">Sange på tribunen</h2>
 
   <div class="background" v-for="element in songsDummy">
-    <div class="container" >
+    <div class="container" v-if="!hideElements">
       <h2 class="title">{{ element.title }}</h2>
 
       <h3 class="lyrics" style=" display: none;">{{ element.lyrics }}</h3>
@@ -174,6 +186,9 @@ const audioEnded = (id) => {
             <div class="circle"></div>
           </div>
         </div>
+              <button @click="showLyrics(element.ID)">
+        hello 
+      </button>
       </div>
       <button :id="'playButton' + element.ID" class="playButton" @click="changeAudioState(element.ID)">
         <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -182,8 +197,9 @@ const audioEnded = (id) => {
           <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
         </svg>
       </button>
+
     </div>
-    <div class="fullLyrics">
+    <div :id="'lyrics' + element.ID" class="fullLyrics">
 
     </div>
   </div>
@@ -192,11 +208,13 @@ const audioEnded = (id) => {
 <style scoped>
 .background .fullLyrics{
   position:absolute;
-  top: 0;
-  right: 0;
-  height: 200px;
-  width: 200px;
+  top: calc(var(--headerHeight) - 1px);
+  left: 0;
+  bottom: calc(var(--footerHeight) - 11px);
+  height: auto;
+  width: 100%;
   background-color: deeppink;
+  display: none;
 }
   .background .container{
     width: 100%;
