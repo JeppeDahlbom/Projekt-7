@@ -58,7 +58,7 @@ let songsDummy = ref([
   {
     title: "Store stolte Odense",
     duration: 58.0,
-    lyrics: "Stolte Odense,<br> Store stolte Odense,<br> Vi slås for din ære,<br> Vi kæmper for dit na-a-avn ",
+    lyrics: "Stolte Odense, Store stolte Odense, Vi slås for din ære, Vi kæmper for dit na-a-avn ",
     ID: 1,
     progress: 0.0,
     playing:false
@@ -115,14 +115,7 @@ if(audio.paused){
 const audioEnded = (id) => {
   songsDummy.value.find((song) => {return song.ID === id}).playing = false;
 }
-const changeLyricsState = (id) =>{
-  const lyrics = document.getElementById('lyrics'+id);
-  if(lyrics.style.display == 'none'){
-    lyrics.style.display = 'block';
-  }else{
-    lyrics.style.display = 'none';
-  }
-}
+
 
 </script>
 <template>
@@ -144,11 +137,14 @@ const changeLyricsState = (id) =>{
   <h2 class="titleMark">Sange på tribunen</h2>
 
   <div class="background" v-for="element in songsDummy">
-    <div class="container">
-    <button class="LyricsButton" @click="changeLyricsState(element.ID)">
+    <div class="container" >
       <h2 class="title">{{ element.title }}</h2>
+
+      <h3 class="lyrics" style=" display: none;">{{ element.lyrics }}</h3>
+
       <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" @timeupdate="updateProgress(element.ID)"   @ended="audioEnded(element.ID)"></audio>
-      <svg class="banner" viewBox="0 0 100 410" xmlns="http://www.w3.org/2000/svg">
+
+      <svg class="banner" viewBox="0 0 100 210" xmlns="http://www.w3.org/2000/svg">
         <!-- Venstre kolonne -->
         <rect x="0" y="-10" width="20" height="20"/>
         <rect x="0" y="20" width="20" height="20"/>
@@ -158,16 +154,8 @@ const changeLyricsState = (id) =>{
         <rect x="0" y="140" width="20" height="20"/>
         <rect x="0" y="170" width="20" height="20"/>
         <rect x="0" y="200" width="20" height="20"/>
-        <rect x="0" y="230" width="20" height="20"/>
-        <rect x="0" y="260" width="20" height="20"/>
-        <rect x="0" y="290" width="20" height="20"/>
-        <rect x="0" y="320" width="20" height="20"/>
-        <rect x="0" y="350" width="20" height="20"/>
-        <rect x="0" y="380" width="20" height="20"/>
-        <rect x="0" y="410" width="20" height="20"/>
-        <rect x="0" y="440" width="20" height="20"/>
-        <rect x="0" y="470" width="20" height="20"/>
-        <rect x="0" y="500" width="20" height="20"/>
+
+
         <!-- Højre kolonne -->
         <rect x="20" y="5" width="70" height="20"/>
         <rect x="20" y="35" width="70" height="20"/>
@@ -176,17 +164,9 @@ const changeLyricsState = (id) =>{
         <rect x="20" y="125" width="70" height="20"/>
         <rect x="20" y="155" width="70" height="20"/>
         <rect x="20" y="185" width="70" height="20"/>
-        <rect x="20" y="215" width="70" height="20"/>
-        <rect x="20" y="245" width="70" height="20"/>
-        <rect x="20" y="275" width="70" height="20"/>
-        <rect x="20" y="305" width="70" height="20"/>
-        <rect x="20" y="335" width="70" height="20"/>
-        <rect x="20" y="365" width="70" height="20"/>
-        <rect x="20" y="395" width="70" height="20"/>
-        <rect x="20" y="425" width="70" height="20"/>
-        <rect x="20" y="455" width="70" height="20"/>
-        <rect x="20" y="485" width="70" height="20"/>
+
       </svg>
+      
       <div class="progress">
         <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
         <div class="audioProgressBG">
@@ -195,58 +175,41 @@ const changeLyricsState = (id) =>{
           </div>
         </div>
       </div>
-      <div :id="'lyrics' + element.ID" style="display: none; grid-area: lyrics;">
-        <p class="lyrics"  v-html="element.lyrics"></p>
-      </div>
-      </button>
       <button :id="'playButton' + element.ID" class="playButton" @click="changeAudioState(element.ID)">
-      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <polygon v-if="!element.playing" points="28,10 28,90 95,50" stroke="none" />
-        <line v-if="element.playing" x1="32" y1="25" x2="32" y2="75"/>
-        <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
-      </svg>
-    </button>
-    </div>    
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon v-if="!element.playing" points="28,10 28,90 95,50" stroke="none" />
+          <line v-if="element.playing" x1="32" y1="25" x2="32" y2="75"/>
+          <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
+        </svg>
+      </button>
+    </div>
+    <div class="fullLyrics">
+
+    </div>
   </div>
 
 </template>
 <style scoped>
+.background .fullLyrics{
+  position:absolute;
+  top: 0;
+  right: 0;
+  height: 200px;
+  width: 200px;
+  background-color: deeppink;
+}
   .background .container{
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto 90px;
+    grid-template-rows: auto auto;
+    grid-template-columns: 90px auto 90px;
     grid-template-areas:
-      "button play";
+      "banner title play"
+      "banner progress play";
       gap: 0;
       overflow: hidden;
       position: relative;
-  }
-  .background .container .LyricsButton{
-    grid-area: button;
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-rows: auto auto auto;
-    grid-template-columns: 90px auto;
-    grid-template-areas:
-      "banner title"
-      "banner progress"
-      "banner lyrics";
-      gap: 0;
-      overflow: hidden;
-      position: relative;
-      border: none;
-      padding: 0;
-      background: none;
-  }
-  .background .container p.lyrics{
-    color: var(--Blue);
-    font-size: 14px;
-    padding: 3px 0;
-    padding-bottom: 10px;
-    text-align: left;
   }
   .background .container .banner{
     grid-area: banner;
@@ -317,7 +280,6 @@ const changeLyricsState = (id) =>{
     cursor: pointer;
     position: relative;
     margin: auto;
-    margin-top: 20px;
     padding: 0;
   }
   .playButton svg{
@@ -361,7 +323,6 @@ const changeLyricsState = (id) =>{
     grid-area: title;
     color: var(--Blue);
     text-transform: uppercase;
-    text-align: left;
     padding-top: 5px;
     font-size: 25px;
     min-height: 3em;
@@ -380,6 +341,5 @@ const changeLyricsState = (id) =>{
     margin-bottom: 30px;
     margin-top: 10px;
     border-radius: 10px;
-    overflow: hidden;
   }
 </style>

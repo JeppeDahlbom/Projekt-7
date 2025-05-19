@@ -94,7 +94,7 @@ const updateMargins = () => {
 </template>
 
 
-<style scoped>
+<style>
 header,footer{
   display: block;
   position: fixed;
