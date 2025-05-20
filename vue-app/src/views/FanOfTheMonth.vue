@@ -7,8 +7,9 @@ import heroImage from '/assets/images/heroImageFan.png'
   </div>
   <h2 class="titleMark">BLIV MÅNEDENS FAN</h2>
   <button class="upload-button">
-  <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M5 17h14v2H5v-2zm7-12l5 5h-3v4h-4v-4H7l5-5z"/>
+  <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 20">
+    <path d="M3.5 8 L12 0 L20.5 8 H15.5 V14 H8.5 V8 Z" stroke-width="0.2" stroke="none"/>
+    <path d="M1 19 H23" stroke-width="2"/>
   </svg>
     <h2>UPLOAD DIT FAN ØJEBLIK HER</h2>
   </button>
@@ -39,20 +40,33 @@ h3 {
     padding-top: 15px;
 }
 .upload-button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 24px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 30px auto;
+  grid-template-areas:
+    "icon text";
+  gap: 0;
   border: 2px solid #ccc;
   border-radius: 8px;
   background-color: white;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-size: 16px;
+  width: 100%;
+  padding: 20px 10px;
 }
-
+.upload-button h2{
+  grid-area: text;
+  font-size: inherit;
+  margin: auto;
+  width: fit-content;
+  color: black;
+}
 .upload-icon {
-  width: 40px;
-  height: 40px;
+  grid-area: icon;
+  width: 100%;
+  height: auto;
   fill: var(--Blue);
+  stroke: var(--Blue);
+  margin: auto;
 }
 </style>
