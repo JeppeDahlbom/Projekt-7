@@ -14,10 +14,10 @@ import Transfer from '../views/Transfer.vue'
 const routes = [
   { path: '/', name: 'Nyheder', component: News },
   { path: '/billetter', name: 'Køb billet', component: Billetter },
-  { path: '/MånedensFan', name: 'Månedens fan', component: FanOfTheMonth },
+  { path: '/MaanedensFan', name: 'Månedens fan', component: FanOfTheMonth },
   { path: '/Menu', name: 'MENU', component: Menu },
   { path: '/Placering', name: 'Stilling', component: Placement },
-  { path: '/season', name: 'Sæson', component: Season },
+  { path: '/season', name: 'Sæsonen', component: Season },
   { path: '/Sange', name: 'Sang katalog', component: Songs },
   { path: '/Holdet', name: 'Truppen', component: Squad },
   { path: '/Transfers', name: 'Transfers', component: Transfer }

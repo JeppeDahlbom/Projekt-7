@@ -88,6 +88,7 @@ const updateMargins = () => {
     <router-link to="/season"><img src="/assets/icons/Season.svg" alt=""><h3>Sæson</h3></router-link>
     <router-link to="/billetter"><img src="/assets/icons/Ticket.svg" alt=""><h3>Billet</h3></router-link>
     <router-link to="/Sange"><img src="/assets/icons/Songs.svg" alt=""><h3>Sange</h3></router-link>
+    <router-link to="/MaanedensFan"><img src="/assets/icons/Songs.svg" alt=""><h3>Månedens fan</h3></router-link>
     <router-link style="display: none;" to="/Menu"><img src="/assets/icons/Menu.svg" alt=""><h3>Menu</h3></router-link>
   </footer>
 </template>
@@ -153,6 +154,7 @@ header .settings img{
 header .pageName{
   grid-area: pageName;
   text-transform: uppercase;
+  padding-top: 10px;
 }
 
 .animation {
