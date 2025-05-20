@@ -3,6 +3,9 @@ import { ref } from 'vue'
 
 import heroImage from '../assets/images/heroImageSongs.png'
 
+let hideElements = ref(false);
+
+
 let isListening = false;
 let audioContext, analyser, dataArray, bars;
 let stream;
@@ -118,7 +121,7 @@ if(audio.paused){
 const audioEnded = (id) => {
   songsDummy.value.find((song) => {return song.ID === id}).playing = false;
 }
-let hideElements = ref(false);
+
 const showLyrics = (id) => {
   const lyrics = document.getElementById('lyrics'+id);
   if(lyrics.style.display == 'none'){
@@ -156,8 +159,60 @@ const showLyrics = (id) => {
     <div class="container" v-if="!hideElements">
       <h2 class="title">{{ element.title }}</h2>
 
-      <h3 class="lyrics" style=" display: none;">{{ element.lyrics }}</h3>
+      <svg class="banner" viewBox="0 0 100 210" xmlns="http://www.w3.org/2000/svg">
+        <!-- Venstre kolonne -->
+        <rect x="0" y="-10" width="20" height="20"/>
+        <rect x="0" y="20" width="20" height="20"/>
+        <rect x="0" y="50" width="20" height="20"/>
+        <rect x="0" y="80" width="20" height="20"/>
+        <rect x="0" y="110" width="20" height="20"/>
+        <rect x="0" y="140" width="20" height="20"/>
+        <rect x="0" y="170" width="20" height="20"/>
+        <rect x="0" y="200" width="20" height="20"/>
 
+
+        <!-- Højre kolonne -->
+        <rect x="20" y="5" width="70" height="20"/>
+        <rect x="20" y="35" width="70" height="20"/>
+        <rect x="20" y="65" width="70" height="20"/>
+        <rect x="20" y="95" width="70" height="20"/>
+        <rect x="20" y="125" width="70" height="20"/>
+        <rect x="20" y="155" width="70" height="20"/>
+        <rect x="20" y="185" width="70" height="20"/>
+
+      </svg>
+      
+      <div class="progress">
+        <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
+        <div class="audioProgressBG">
+          <div :class="'audioProgress progressBar'+element.ID" >
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      <button class="playButton" @click="changeAudioState(element.ID);showLyrics(element.ID);">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon v-if="!element.playing" points="28,10 28,90 95,50" stroke="none" />
+          <line v-if="element.playing" x1="32" y1="25" x2="32" y2="75"/>
+          <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
+        </svg>
+      </button>
+    </div>
+
+
+
+    <div :id="'lyrics' + element.ID" class="fullLyrics" style="display: none;"> 
+      <button class="closeLyrics" @click="showLyrics(element.ID)">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 40 L50 70 L80 40"  />
+        </svg> 
+      </button>
+
+      <p class="lyrics" v-html="element.lyrics"></p>
+      
+      <div class="bottomLyrics">
+    <div class="container" v-if="hideElements">
+      <h2 class="title">{{ element.title }}</h2>
 
       <svg class="banner" viewBox="0 0 100 210" xmlns="http://www.w3.org/2000/svg">
         <!-- Venstre kolonne -->
@@ -189,9 +244,6 @@ const showLyrics = (id) => {
             <div class="circle"></div>
           </div>
         </div>
-        <button @click="showLyrics(element.ID)">
-          hello 
-        </button>
       </div>
       <button class="playButton" @click="changeAudioState(element.ID)">
         <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -200,34 +252,7 @@ const showLyrics = (id) => {
           <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
         </svg>
       </button>
-
     </div>
-    <div :id="'lyrics' + element.ID" class="fullLyrics" style="display: none;">
-      <div class="titleAreaLyics">
-      <h2 class="titleLyrics">{{ element.title }}</h2>
-      <button class="closeLyrics" @click="showLyrics(element.ID)">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 40 L50 70 L80 40"  />
-        </svg> 
-      </button>
-      </div>
-      <p class="lyrics" v-html="element.lyrics"></p>
-      <div class="bottomLyrics">
-        <div class="progressLyrics">
-          <p class="durationLyrics">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
-          <div class="audioProgressBGLyrics">
-            <div :class="'audioProgress progressBar'+element.ID" >
-              <div class="circle"></div>
-            </div>
-          </div>
-        </div>
-        <button class="playButton playButtonLyrics" @click="changeAudioState(element.ID)">
-            <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <polygon v-if="!element.playing" points="28,10 28,90 95,50" stroke="none" />
-              <line v-if="element.playing" x1="32" y1="25" x2="32" y2="75"/>
-              <line v-if="element.playing" x1="68" y1="25" x2="68" y2="75"/>
-            </svg>
-        </button>
       </div>
     </div>
   </div>
@@ -244,40 +269,26 @@ const showLyrics = (id) => {
   background-color: var(--Blue);
 
   display: grid;
-  grid-template-rows: min-content min-content auto;
+  grid-template-rows: min-content min-content;
   grid-template-columns: auto;
   grid-template-areas:
-    "titleAreaLyics"
-    "lyrics"
-    "bottomLyrics";
+    "closeLyrics"
+    "lyrics";
   gap: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
-.background .fullLyrics .titleAreaLyics{
-  grid-area: titleAreaLyics;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 60px auto 60px;
-  grid-template-areas:
-    "buttonLyrics titleLyrics .";
-  gap: 0;
-}
-.background .fullLyrics .titleLyrics{
-  grid-area: titleLyrics;
-  color: white;
-  font-size: 25px;
-  text-align: center;
-}
-
 .background .fullLyrics .closeLyrics{
-  grid-area: buttonLyrics;
+  grid-area: closeLyrics;
   margin: auto;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: white;
   border: none;
   border-radius: 35px;
   padding: 0;
   position: relative;
+  margin-right: 10px;
 }
 .background .fullLyrics .closeLyrics svg{
     fill: none;
@@ -292,29 +303,21 @@ const showLyrics = (id) => {
     height: 100%; 
 
 }
+.background .fullLyrics .bottomLyrics{
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
+}
 
 .background .fullLyrics .lyrics{
-  grid-area: lyrics;
   color: white;
   margin: auto 20%;
+  text-align: center;
+  font-size: 25px;
 }
-.background .fullLyrics .bottomLyrics{
-  grid-area: bottomLyrics;
-}
-
-.background .fullLyrics .audioProgressBGLyrics{
-  width: 100%;
-  height: 6px;
-  background-color: lightgray;
-  border-radius: 20px;
-}
-
-.background .fullLyrics .playButtonLyrics{
+.background .fullLyrics .bottomLyrics .container{
   background-color: white;
-}
-.background .fullLyrics .playButtonLyrics svg{
-  fill: var(--Blue);
-  stroke: var(--Blue);
 }
   .background .container{
     width: 100%;
@@ -351,14 +354,14 @@ const showLyrics = (id) => {
 
   }
 
-  .background .container .progress .audioProgressBG{
+  .background .audioProgressBG{
   width: 100%;
   height: 4px;
   background-color: lightgray;
   border-radius: 20px;
   }
 
-  .background .container .progress .audioProgress{
+  .background .audioProgress{
   width: 0%;
   height: 100%;
   background-color: var(--Blue);
