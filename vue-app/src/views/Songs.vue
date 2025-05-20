@@ -98,7 +98,10 @@ let songsDummy = ref([
 ]);
 
 const updateProgress = (id) => {
-  document.getElementById('progressBar'+id).style.width = `${(document.getElementById('audioFile'+id).currentTime / document.getElementById('audioFile'+id).duration) * 100}%`;
+  const fillPercentage = `${(document.getElementById('audioFile'+id).currentTime / document.getElementById('audioFile'+id).duration) * 100}%`;
+  document.querySelectorAll('.progressBar'+id).forEach((element)=>{
+    element.style.width = fillPercentage;
+  });
 }
 
 const changeAudioState = (id) => {
@@ -149,12 +152,12 @@ const showLyrics = (id) => {
   <h2 class="titleMark">Sange på tribunen</h2>
 
   <div class="background" v-for="element in songsDummy">
+    <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" @timeupdate="updateProgress(element.ID)"   @ended="audioEnded(element.ID)"></audio>
     <div class="container" v-if="!hideElements">
       <h2 class="title">{{ element.title }}</h2>
 
       <h3 class="lyrics" style=" display: none;">{{ element.lyrics }}</h3>
 
-      <audio :id="'audioFile' + element.ID" :src="`/assets/songs/${element.ID}.mp3`" type="audio/mpeg" @timeupdate="updateProgress(element.ID)"   @ended="audioEnded(element.ID)"></audio>
 
       <svg class="banner" viewBox="0 0 100 210" xmlns="http://www.w3.org/2000/svg">
         <!-- Venstre kolonne -->
@@ -182,13 +185,13 @@ const showLyrics = (id) => {
       <div class="progress">
         <p class="duration">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
         <div class="audioProgressBG">
-          <div :id="'progressBar' + element.ID" class="audioProgress" >
+          <div :class="'audioProgress progressBar'+element.ID" >
             <div class="circle"></div>
           </div>
         </div>
-              <button @click="showLyrics(element.ID)">
-        hello 
-      </button>
+        <button @click="showLyrics(element.ID)">
+          hello 
+        </button>
       </div>
       <button :id="'playButton' + element.ID" class="playButton" @click="changeAudioState(element.ID)">
         <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -200,7 +203,23 @@ const showLyrics = (id) => {
 
     </div>
     <div :id="'lyrics' + element.ID" class="fullLyrics">
+      <div class="titleAreaLyics">
 
+      </div>
+      <h2 class="titleLyrics">{{ element.title }}</h2>
+      <p class="lyrics">{{ element.lyrics }}</p>
+
+      <div class="progressLyrics">
+        <p class="durationLyrics">{{ Math.floor(element.duration/60) }}:{{ String(element.duration-(Math.floor(element.duration/60)*60)).padStart(2, '0') }}</p> 
+        <div class="audioProgressBGLyrics">
+          <div :class="'audioProgress progressBar'+element.ID" >
+            <div class="circle"></div>
+          </div>
+        </div>
+        <button @click="showLyrics(element.ID)">
+          hello 
+        </button>
+      </div>
     </div>
   </div>
 
@@ -208,13 +227,38 @@ const showLyrics = (id) => {
 <style scoped>
 .background .fullLyrics{
   position:absolute;
-  top: calc(var(--headerHeight) - 1px);
+  top: calc(var(--headerHeight));
+  bottom: calc(var(--footerHeight) - 10px);
   left: 0;
-  bottom: calc(var(--footerHeight) - 11px);
   height: auto;
   width: 100%;
-  background-color: deeppink;
+  background-color: var(--Blue);
   display: none;
+}
+.background .fullLyrics .titleAreaLyics{
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 90px auto 90px;
+  grid-template-areas:
+    "button title .";
+  gap: 0;
+}
+.background .fullLyrics .titleLyrics{
+  grid-area: title;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+}
+
+.background .fullLyrics .lyrics{
+  color: white;
+}
+
+.background .fullLyrics .audioProgressBGLyrics{
+  width: 100%;
+  height: 6px;
+  background-color: lightgray;
+  border-radius: 20px;
 }
   .background .container{
     width: 100%;

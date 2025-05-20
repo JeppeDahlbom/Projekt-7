@@ -62,8 +62,8 @@ onMounted(async () => {
 });
 
 const updateMargins = () => {
-  document.documentElement.style.setProperty('--headerHeight', `${headerRef.value.offsetHeight}px`);
-  document.documentElement.style.setProperty('--footerHeight', `${footerRef.value.offsetHeight+10}px`);
+  document.documentElement.style.setProperty('--headerHeight', `${headerRef.value.offsetHeight-1}px`);
+  document.documentElement.style.setProperty('--footerHeight', `${footerRef.value.offsetHeight+11}px`);
 }
 
 </script>
