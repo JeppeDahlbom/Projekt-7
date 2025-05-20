@@ -149,7 +149,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
       </div>
     </div>
   </div>
-  <div class="MyProfile" style="display: none;">
+  <div class="MyProfile">
     <h2 class="titleMark">Min profil</h2>
     <div class="container">
       <div class="background">
@@ -157,23 +157,23 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
           <div>
             <img src="/assets/icons/verifiedBadge.png" alt="">
             <img src="/assets/icons/verifiedBadge.png" alt="">
-
           </div>
           <a href=""><h3>Se dine badges</h3></a>
         </div>
         <h2>Odense</h2>
-        <img src="/assets/images/myProfileBG.svg" alt="">
+        <img class="bgStripes" src="/assets/images/myProfileBG.svg" alt="">
       </div>
       <div class="foreground">
         <div class="shirt">
           <h2>Gustavo</h2>
-          <h2>8</h2>
+          <h2 class="shirtNumber">28</h2>
         </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+
 .MyProfile .background .badges{
   display: flex;
   height: 36px;
@@ -199,6 +199,10 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 .MyProfile .background img{
   width: 100%;
 }
+.MyProfile .background .bgStripes{
+  position: absolute;
+  bottom: 0;
+}
 .MyProfile .background h2{
   font-size: 30vw;
   text-align: center;
@@ -216,6 +220,38 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 }
 .MyProfile .background, .MyProfile .foreground{
   grid-area: stack;
+}
+.MyProfile .background{
+  position: relative;
+}
+.MyProfile .foreground{
+  padding-top: 90px;
+  z-index: 10;
+
+}
+
+.MyProfile .foreground .shirt{
+  background-image: url('/assets/images/shirt.png');
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MyProfile .foreground .shirt h2{
+  color: #D32840;
+  letter-spacing: 0px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+}
+.MyProfile .foreground .shirt .shirtNumber{
+  font-size: 90px;
+  margin-bottom: 50px;
+  
 }
 
 .OBMedia .container{
