@@ -13,7 +13,7 @@ import Transfer from '../views/Transfer.vue'
 
 const routes = [
   { path: '/', name: 'Nyheder', component: News },
-  { path: '/billetter', name: 'Køb billet', component: Billetter },
+  { path: '/billetter', name: 'Billetter', component: Billetter },
   { path: '/MaanedensFan', name: 'Månedens fan', component: FanOfTheMonth },
   { path: '/Menu', name: 'MENU', component: Menu },
   { path: '/Placering', name: 'Stilling', component: Placement },

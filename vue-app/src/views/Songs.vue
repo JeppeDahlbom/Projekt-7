@@ -58,7 +58,7 @@ let songsDummy = ref([
   {
     title: "Store stolte Odense",
     duration: 58.0,
-    lyrics: "Stolte Odense, Store stolte Odense, Vi slås for din ære, Vi kæmper for dit na-a-avn ",
+    lyrics: "Stolte Odense,<br> Store stolte Odense,<br> Vi slås for din ære,<br> Vi kæmper for dit na-a-avn ",
     ID: 1,
     progress: 0.0,
     playing:false
@@ -66,7 +66,7 @@ let songsDummy = ref([
   {
     title: "Crazy Frog",
     duration: 172.0,
-    lyrics: "Fyn er fin og fyldt med mod,Vi kæmper med passion og blod",
+    lyrics: "Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>",
     ID: 2,
     progress: 0.0,
     playing:false

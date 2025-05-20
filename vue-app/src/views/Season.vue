@@ -32,7 +32,7 @@ const links = [
   },
   {
     title: "Månedens fan",
-    link: "/MånedensFan",
+    link: "/MaanedensFan",
     image: squadBG
   }
 ];
