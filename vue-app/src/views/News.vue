@@ -127,7 +127,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
         </div>
         <h2 class="score" style="grid-area: awayScore;">{{ element.dateTime < new Date() ? element.result[1] : '' }}</h2>
 
-        <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
+        <h3 class="time" style="grid-area: dateTime;">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }).padStart(2, '0') }}</h3>
         <p class="location" style="grid-area: stadion;">{{ element.stadion.trim() }}</p>
         <a class="addToCalendar" style="grid-area: addCalendar;" href=""><img :src="addCalendar" alt=""></a>
       </div>

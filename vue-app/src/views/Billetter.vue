@@ -56,14 +56,14 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
       <h3 class="homeName">{{ element.home }}</h3> 
       <h3 class="v">vs</h3>
       <h3 class="awayName">{{ element.away }}</h3>
-      <h3 class="timeDate" >{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
+      <h3 class="timeDate" >{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }} {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }).padStart(2, '0') }}</h3>
       <img :src="getLogoLink(element.home)" alt="" class="home logoImg">
       <img :src="getLogoLink(element.away)" alt="" class="away logoImg">
     </div>
     <div class="buyBG">
       <h3 class="teams">{{ element.home }} - {{ element.away }}</h3>
       <h3 class="dateLocation">{{ element.dateTime.toLocaleDateString('da-DK', { weekday: 'long' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} {{ element.dateTime.getDate() }}. {{ element.dateTime.toLocaleDateString('da-DK', { month: 'short' }).replace('.', '').replace(/^./, c => c.toUpperCase()) }} - {{ element.stadion }}</h3>
-      <h3 class="time">{{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }) }}</h3>
+      <h3 class="time">{{ element.dateTime.toLocaleTimeString('da-DK', { hour: '2-digit', hour12: false }) }}:{{ element.dateTime.toLocaleTimeString('da-DK', { minute: '2-digit' }).padStart(2, '0') }}</h3>
       <a href="https://ob.eventii.dk/?utm_source=website&utm_medium=header_menu&utm_campaign=kob_billet">Køb billet</a>
     </div>
   </div>
