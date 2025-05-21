@@ -389,7 +389,8 @@ const showLyrics = (id) => {
     justify-content: center;
     gap: 4px;
     cursor: pointer;
-    margin: auto;
+    margin: 30px auto;
+    margin-top: 20px;
   }
   .playButton{
     grid-area: play;

@@ -18,7 +18,7 @@ const links = [
     image: matchBG
   },{
     title: "Stilling",
-    link: "/Stilling",
+    link: "https://ob.dk/stillinger",
     image: teamworkBG
   },{
     title: "Fanshop",
@@ -27,13 +27,8 @@ const links = [
   },
   {
     title: "Transfer",
-    link: "/Transfers",
+    link: "/season",
     image: playerBG
-  },
-  {
-    title: "Månedens fan",
-    link: "/MaanedensFan",
-    image: squadBG
   }
 ];
 
