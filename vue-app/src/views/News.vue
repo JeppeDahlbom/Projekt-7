@@ -31,27 +31,27 @@ const gamesDummy = [
     away: "SIF",
     stadion:"Nature energy park",
     stadionPosition:"to be added",
-    dateTime:   new Date('2025-04-20T09:30:00'), // Før i dag, kl. 09:30
+    dateTime:   new Date('2025-05-20T09:30:00'), // Før i dag, kl. 09:30
     result:[1,1],
     league: "Super league",
     matchID: 1
   },
   {
-    home: "SIF",
+    home: "VFF",
     away: "OB",
     stadion:"Nature energy park",
     stadionPosition:"to be added",
-    dateTime:   new Date('2025-04-28T15:45:00'), // Før i dag, kl. 15:45
+    dateTime:   new Date('2025-05-21T15:45:00'), // Før i dag, kl. 15:45
     result:[1,1],
     league: "Super league",
     matchID: 2
   },
   {
     home: "OB",
-    away: "SIF",
+    away: "BIF",
     stadion:"Nature energy park",
     stadionPosition:"to be added",
-    dateTime:   new Date('2025-05-02T08:00:00'), // Efter i dag, kl. 08:00
+    dateTime:   new Date('2025-06-02T08:00:00'), // Efter i dag, kl. 08:00
     result:[1,1],
     league: "Super league",
     matchID: 3
@@ -61,7 +61,7 @@ const gamesDummy = [
     away: "SIF",
     stadion:"Nature energy park",
     stadionPosition:"to be added",
-    dateTime:   new Date('2025-05-10T18:15:00'), // Efter i dag, kl. 18:15
+    dateTime:   new Date('2025-06-10T18:15:00'), // Efter i dag, kl. 18:15
     result:[1,1],
     league: "Super league",
     matchID: 4
