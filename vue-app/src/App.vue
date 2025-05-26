@@ -75,7 +75,16 @@ const updateMargins = () => {
 
   <header ref="headerRef">
     <router-link class="logo" to="/"><img src="/assets/icons/OBLogo.svg" alt=""></router-link>
-    <button class="settings"><img src="/assets/icons/Settings.svg" alt=""></button>
+    <button class="settings">
+      <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
+        <path  d="M19.286,87.457q-.034-1.1-.034-2.205A72.536,72.536,0,0,1,20.4,72.14a55.743,55.743,0,0,1,3.322-11.378,41.081,41.081,0,0,1,5.3-9.25A30.732,30.732,0,0,1,36.1,44.78a25.009,25.009,0,0,0,28.883-.763,29.805,29.805,0,0,1,7.562,6.611A39.892,39.892,0,0,1,78.214,60a54.854,54.854,0,0,1,3.566,11.687,72.227,72.227,0,0,1,1.237,13.568c0,.1,0,.2,0,.3a50.006,50.006,0,0,1-63.73,1.906Z" transform="translate(5 11)"/>
+        <g transform="translate(5 5)" fill="none"  stroke-width="6">
+          <circle cx="50" cy="50" r="50" stroke="none"/>
+          <circle cx="50" cy="50" r="52.5" fill="none"/>
+        </g>
+        <circle cx="20" cy="20" r="20" transform="translate(35 15)"/>
+      </svg>
+    </button>
     <h1 class="pageName">{{ route.name }}</h1>
   </header>
 
@@ -102,6 +111,7 @@ const updateMargins = () => {
 main{
   margin-top: var(--headerHeight);
   margin-bottom: var(--footerHeight);
+  height: calc(100vh - var(--headerHeight) - var(--footerHeight));
 }
 header,footer{
   display: block;
@@ -124,7 +134,7 @@ header{
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 100% auto;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr 0.9fr;
     grid-template-areas:
       "logo . settings"
       "pageName pageName pageName";
@@ -138,6 +148,11 @@ header .logo{
 }
 header .logo img{
   display: block;
+}
+header svg{
+  fill: #ffffff;
+  stroke: #ffffff;
+  height: min-content;
 }
 
 header .settings{

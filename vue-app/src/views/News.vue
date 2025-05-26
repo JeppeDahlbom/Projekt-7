@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import newsBG1 from '../assets/images/newsBG1.webp'
-import newsBG2 from '../assets/images/newsBG2.webp'
+import newsBG2 from '/assets/images/natureEnergyPark.webp'
 import newsBG3 from '../assets/images/newsBG3.webp'
 import addCalendar from '../assets/icons/addCalendar.png'
 
@@ -14,7 +14,7 @@ const newsDummy = [
   },
   {
     header: "KOM TIL STADION",
-    body: "Oplev stemningen når OB tager imod Brøndby IF den 10. Januar kl. 19.00",
+    body: "Oplev stemningen på stadion når OB tager imod Brøndby IF den 10. Januar kl. 19.00",
     image: newsBG2
   },
   {
