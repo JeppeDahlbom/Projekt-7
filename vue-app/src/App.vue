@@ -112,7 +112,7 @@ main{
   margin-top: var(--headerHeight);
   margin-bottom: var(--footerHeight);
   min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
-  height: auto;
+  height: auto; 
 }
 header,footer{
   display: block;
