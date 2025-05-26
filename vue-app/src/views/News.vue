@@ -97,7 +97,7 @@ if(stored){
 const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 
 
-
+ 
 window.addEventListener(`load`,()=>{
   document.head.innerHTML += `
     <link rel="preload" as="image" href="/assets/images/ticketBG.svg" />
