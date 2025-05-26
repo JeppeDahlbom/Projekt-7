@@ -111,7 +111,7 @@ const updateMargins = () => {
 main{
   margin-top: var(--headerHeight);
   margin-bottom: var(--footerHeight);
-  height: auto;
+  height: auto; 
 }
 header,footer{
   display: block;
