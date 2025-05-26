@@ -3,8 +3,6 @@ import { ref } from 'vue'
 import newsBG1 from '../assets/images/newsBG1.webp'
 import newsBG2 from '../assets/images/newsBG2.webp'
 import newsBG3 from '../assets/images/newsBG3.webp'
-import OBMedia from '../assets/images/OBMedia.png'
-import postIMG from '../assets/images/postIMG.png'
 import addCalendar from '../assets/icons/addCalendar.png'
 
 
@@ -26,8 +24,6 @@ const newsDummy = [
   }
 ];
 
-  
-  
   
 const gamesDummy = [
   {
@@ -73,6 +69,23 @@ const gamesDummy = [
 ];
 
 
+const postDummy = [
+  {
+    thumbnailPath: 'interview-tumbnail.png',
+    videoPath: 'interview.mp4',
+    postLink: '/'
+  },
+  {
+    thumbnailPath: 'fan-tumbnail.png',
+    videoPath: 'faninterview.mp4',
+    postLink: '/'
+  },
+  {
+    thumbnailPath: 'postIMG.png',
+    videoPath: '',
+    postLink: '/'
+  }
+]
 const stored = localStorage.getItem('localPlayersDummy');
 const players = ref([]);
 if(stored){
@@ -136,29 +149,29 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   </div>
   <div class="OBMedia">
     <h2 class="titleMark">OB Media</h2>
-    <div class="container">
-      <div class="playButton">
-        <a href="">
-          <img :src="OBMedia" alt="">
-      </a>
-      </div>
-      <div class="post">
-        <a href="">
-          <img :src="postIMG" alt="">
-        </a>
-      </div>
-    </div>
+    <swiper-container
+    grab-cursor = "true" 
+    scrollbar = "true"  
+    slides-per-view = "2"
+    space-between = "10"
+    :loop = "false"
+    > 
+      <swiper-slide v-for="element in postDummy" class="swiperSlide">
+        <video v-if="element.videoPath" :src="`/assets/video/${element.videoPath}`" :poster="`/assets/images/${element.thumbnailPath}`" controls ></video>
+        <img v-else :src="`/assets/images/${element.thumbnailPath}`" alt="" />        
+      </swiper-slide>
+    </swiper-container>
   </div>
   <div class="MyProfile">
     <h2 class="titleMark">Min profil</h2>
     <div class="container">
       <div class="background">
         <div class="badges">
-          <div>
+          <div class="badgeIcons">
             <img src="/assets/icons/verifiedBadge.png" alt="">
-            <img src="/assets/icons/verifiedBadge.png" alt="">
+            <img src="/assets/icons/seasonCard2.png" alt="">
           </div>
-          <a href=""><h3>Se dine badges</h3></a>
+          <a href="/"><h3>Se dine badges</h3></a>
         </div>
         <h2>Odense</h2>
         <img class="bgStripes" src="/assets/images/myProfileBG.svg" alt="">
@@ -196,6 +209,12 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 .MyProfile .background .badges a{
   margin-left: auto;
 }
+.MyProfile .background .badges .badgeIcons{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .MyProfile .background img{
   width: 100%;
 }
@@ -254,22 +273,16 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
   
 }
 
-.OBMedia .container{
-  display: flex;
-  flex-direction: row;
-}
-.OBMedia .container .playButton, .OBMedia .container .post{
+.OBMedia .swiperSlide img, .OBMedia .swiperSlide video{
   width: 100%;
-}
-.OBMedia .container a, .OBMedia .container img{
-  width: calc(100% - 16px);
   aspect-ratio: 1/1;
-  border-radius: 10px;
-  overflow: hidden;
+  object-fit: cover;
 }
-.OBMedia .container a{
-  margin: 10px 8px ;
+
+.OBMedia .swiperSlide video:fullscreen{
+  object-fit: contain;
 }
+
 
 
 .newsSlider, .gamesSlider, .OBMedia, .MyProfile{
