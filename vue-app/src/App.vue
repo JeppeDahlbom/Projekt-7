@@ -141,7 +141,6 @@ header{
 }
 header *{
   width: 100%;
-  height: min-content; 
 }
 
 header .logo{
@@ -153,7 +152,7 @@ header .logo img{
 header svg{
   fill: #ffffff;
   stroke: #ffffff;
-  height: min-content;
+  height: auto;
 }
 
 header .settings{
