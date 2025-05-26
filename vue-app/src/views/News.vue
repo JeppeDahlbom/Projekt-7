@@ -161,7 +161,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
         <img v-else :src="`/assets/images/${element.thumbnailPath}`" alt="" />        
       </swiper-slide>
     </swiper-container>
-  </div>
+  </div> 
   <div class="MyProfile">
     <h2 class="titleMark">Min profil</h2>
     <div class="container">
