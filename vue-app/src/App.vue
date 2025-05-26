@@ -141,7 +141,7 @@ header{
 }
 header *{
   width: 100%;
-  height: min-content;
+  height: min-content; 
 }
 
 header .logo{
