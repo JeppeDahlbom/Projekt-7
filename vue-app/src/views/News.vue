@@ -96,6 +96,65 @@ if(stored){
 
 const getLogoLink = (team) =>{return `/assets/icons/${team}Logo.svg`};
 
+
+
+window.addEventListener(`load`,()=>{
+  document.head.innerHTML += `
+    <link rel="preload" as="image" href="/assets/images/ticketBG.svg" />
+    <link rel="preload" as="image" href="/assets/icons/ACHSLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/BIFLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/EFBSLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/FCMSLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/Menu.svg">
+    <link rel="preload" as="image" href="/assets/icons/OBLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/OBLogoTransparent.svg">
+    <link rel="preload" as="image" href="/assets/icons/OBSLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/Season.svg">
+    <link rel="preload" as="image" href="/assets/icons/SIFLogo.svg">
+    <link rel="preload" as="image" href="/assets/icons/Songs.svg">
+    <link rel="preload" as="image" href="/assets/icons/StarIcon.svg">
+    <link rel="preload" as="image" href="/assets/icons/StarIconFilled.svg">
+    <link rel="preload" as="image" href="/assets/icons/Ticket.svg">
+    <link rel="preload" as="image" href="/assets/icons/VFFLogo.svg">
+    <link rel="preload" as="image" href="/assets/images/3FSuperliga.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="/assets/images/gamesBG.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="/assets/images/LightBGStripes.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="/assets/images/myProfileBG.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="/assets/images/ticketBG.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="/assets/images/natureEnergyPark.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/icons/seasonCard2.png">
+    <link rel="preload" as="image" href="/assets/icons/verifiedBadge.png">
+    <link rel="preload" as="image" href="/assets/images/holdet/AdamSørensen.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/BjørnPaulsen.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/DonDeedsonLouicius.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/EliasHansborg-Sørensen.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/GustavGrubbe.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/JakobBonde.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/JamesGomez.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/Jay-RoyGrot.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/JuliusBerthelAskouHansen.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/LeeroyOwusu.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/LucaKjerrumgaard.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/MarcusMcCoy.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/MarkusJensen.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/MartinHansen.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/MaxEjdum.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/NicholasMickelson.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/NicolasBürgy.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/NikolajJull-Sandberg.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/TomTrybull.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/ViljarMyhra.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/WilliamMartin.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/holdet/YayaBojang.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/change-bg.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="/assets/images/match-bg.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="/assets/images/player-bg.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="/assets/images/teamwork-bg.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="/assets/images/traning-bg.jpg" type="image/jpeg">
+`
+});
+
+
 </script>
 
 

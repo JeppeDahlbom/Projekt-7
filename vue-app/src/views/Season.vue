@@ -1,34 +1,27 @@
 <script setup>
-import playerBG from '../assets/images/player-bg.jpg'
-import bystandersBG from '../assets/images/bystanders-bg.jpg'
-import changeBG from '../assets/images/change-bg.jpg'
-import matchBG from '../assets/images/match-bg.jpg'
-import squadBG from '../assets/images/squad-bg.jpg'
-import teamworkBG from '../assets/images/teamwork-bg.jpg'
-import traningBG from '../assets/images/traning-bg.jpg'
 
 const links = [
 {
     title: "Truppen",
     link: "/Holdet",
-    image: traningBG
+    image: `/assets/images/traning-bg.jpg`
   },{
     title: "Kampe",
     link: "https://ob.dk/kampprogram",
-    image: matchBG
+    image: `/assets/images/match-bg.jpg`
   },{
     title: "Stilling",
     link: "https://ob.dk/stillinger",
-    image: teamworkBG
+    image: `/assets/images/teamwork-bg.jpg`
   },{
     title: "Fanshop",
     link: "https://www.unisport.dk/v/ob/",
-    image: changeBG
+    image: `/assets/images/change-bg.jpg`
   },
   {
     title: "Transfer",
     link: "/season",
-    image: playerBG
+    image: `/assets/images/player-bg.jpg`
   }
 ];
 
