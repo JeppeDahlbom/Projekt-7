@@ -47,6 +47,7 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
 <template>
   <div class="hero-image">
     <img :src="heroImage" alt="Stadionbillede"  />
+    <h3>For klubben, for byen, for altid.</h3>
   </div>
   <h2 class="titleMark">Kommende kampe</h2>
     
@@ -258,8 +259,20 @@ const getLogoLink = (team) =>{return `/assets/icons/${team}SLogo.svg`};
   margin-bottom: 15px;
   border-radius: 0px 0px 5px 5px;
   overflow: hidden;
-
+  position: relative;
 }
+  .hero-image h3{
+    position: absolute;
+    display: block;
+    margin: auto;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    text-align: center;
+    height: min-content;
+    text-shadow: 0 0px 8px black;
+  }
 
   .hero-image img{
   width: 100%;

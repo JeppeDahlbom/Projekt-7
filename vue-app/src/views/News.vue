@@ -82,7 +82,7 @@ const postDummy = [
   },
   {
     thumbnailPath: 'postIMG.png',
-    videoPath: '',
+    videoPath: 'spillerInterview.mp4',
     postLink: '/'
   }
 ]

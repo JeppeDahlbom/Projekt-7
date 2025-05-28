@@ -138,7 +138,8 @@ const showLyrics = (id) => {
 
 <template>
   <div class="hero-image">
-    <img :src="heroImage" alt="Sangbogbilledet"  />
+    <img :src="heroImage" alt="Sangbogbilledet"/>
+    <h3>For klubben, for byen, for altid.</h3>
   </div>
   <h2 class="titleMark">Fang fans sange med AI</h2>
 
@@ -433,6 +434,19 @@ const showLyrics = (id) => {
     margin-top: -1px;
     border-radius: 0px 0px 5px 5px;
     overflow: hidden;
+    position: relative;
+  }
+  .hero-image h3{
+    position: absolute;
+    display: block;
+    margin: auto;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+    text-align: center;
+    height: min-content;
+    text-shadow: 0 0px 8px black;
   }
 
   .hero-image img{
