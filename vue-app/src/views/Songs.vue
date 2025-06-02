@@ -67,33 +67,54 @@ let songsDummy = ref([
     playing:false
   },
   {
-    title: "Crazy Frog",
-    duration: 172.0,
-    lyrics: "Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>Fyn er fin og fyldt med mod,<br>Vi kæmper med passion og blod<br>",
+    title: "Vi er fra Odense",
+    duration: 34.0,
+    lyrics: `Vi er fra Odense,<br> Stolte som få,<br> Odense i hjertet er,<br> Striber i blod,<br> Kom giv os tro igen,<br> Stolthed og ære,<br> Vi vil ha’ guldet hjem,<br> Nu skal det være (x2)`,
     ID: 2,
     progress: 0.0,
     playing:false
   },
   {
-    title: "Vi står sammen",
-    duration: 105.0,
-    lyrics: "Vi står sammen, vi står stærkt,Odense kæmper  altid ærligt",
+    title: "Tribunen kalder det er vores hjem",
+    duration: 62.0,
+    lyrics: `Tribunen kalder det er vores hjem,<br>
+Hvor vi vil stå,<br>
+For hvid og blå,<br>
+Stadion gi’r mig en afhængighed,<br>
+For Odense jeg bliver ved,<br><br>
+
+Lå-lå-lå-lå…`,
     ID: 3,
     progress: 0.0,
     playing:false
   },
   {
-    title: "Hjemmebane helte",
-    duration: 90.0,
-    lyrics: "Hjemmebanehelte, vores OB,Vi synger højt, vi gir' aldrig op",
+    title: "Her i Odense by",
+    duration: 31.0,
+    lyrics: `Her i Odense by,<br>
+Bli’r du født på ny,<br>
+Vi kan føle og mærke,<br>
+Striber i vort hjert’,<br><br>
+
+Sjå-lå-lå-lå…`,
     ID: 4,
     progress: 0.0,
     playing:false
   },
   {
-    title: "Blå og hvid",
-    duration: 100.0,
-    lyrics: "Blå og hvid i hjertet bor,OB vi elsker dig i med og modvind stor",
+    title: "Odense dreng og jeg er stolt",
+    duration: 30.0,
+    lyrics: `Odense dreng og jeg er stolt,<br>
+Byen har det bedste hold,<br>
+Klubben er i hvid og blå,<br>
+Odense kan ingen nå,<br><br>
+
+Så drenge syng så højt i kan,<br>
+Vi skal vise at vi kan,<br>
+Sammen gå fælles flok,<br>
+Odense lad os gå amok,<br><br>
+
+Sjå-lå-lå-lå-lå-lå-lå…`,
     ID: 5,
     progress: 0.0,
     playing:false
@@ -127,10 +148,14 @@ const showLyrics = (id) => {
   if(lyrics.style.display == 'none'){
     lyrics.style.display = 'grid';
       hideElements.value = true;
+      requestAnimationFrame(() => { 
+        document.getElementById('lyricsText'+id).style.paddingBottom = `calc(${document.getElementById('lyricsTitleContainer'+id).offsetHeight+20}px + var(--footerHeight))`;
+      });  
   }else{
     lyrics.style.display = 'none';
     hideElements.value = false;
   }
+
 }
 
 
@@ -209,9 +234,9 @@ const showLyrics = (id) => {
         </svg> 
       </button>
 
-      <p class="lyrics" v-html="element.lyrics"></p>
+      <p :id="'lyricsText' + element.ID" class="lyrics" v-html="element.lyrics"></p>
       
-      <div class="bottomLyrics">
+      <div :id="'lyricsTitleContainer' + element.ID" class="bottomLyrics">
     <div class="container" v-if="hideElements">
       <h2 class="title">{{ element.title }}</h2>
 
@@ -306,14 +331,14 @@ const showLyrics = (id) => {
 }
 .background .fullLyrics .bottomLyrics{
   width: 100%;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: calc(var(--footerHeight) - 10px);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
 }
 
 .background .fullLyrics .lyrics{
   color: white;
-  margin: auto 20%;
+  margin: auto 10%;
   text-align: center;
   font-size: 25px;
 }
