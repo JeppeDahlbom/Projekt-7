@@ -263,7 +263,7 @@ window.addEventListener(`load`,()=>{
   padding: 5px;
   font-size: 20px;
   border-radius: 8px;
-
+ 
 }
 .MyProfile .background .badges a{
   margin-left: auto;
