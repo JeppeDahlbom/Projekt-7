@@ -8,18 +8,20 @@ import Season from '../views/Season.vue'
 import Songs from '../views/Songs.vue'
 import Squad from '../views/Squad.vue'
 import Transfer from '../views/Transfer.vue'
+import Kort from '../views/Map.vue'
 
 
 
 const routes = [
   { path: '/', name: 'Nyheder', component: News },
-  { path: '/billetter', name: 'Billetter', component: Billetter },
+  { path: '/Billetter', name: 'Billetter', component: Billetter },
   { path: '/MaanedensFan', name: 'Månedens fan', component: FanOfTheMonth },
   { path: '/Menu', name: 'MENU', component: Menu },
   { path: '/Placering', name: 'Stilling', component: Placement },
-  { path: '/season', name: 'Sæsonen', component: Season },
+  { path: '/Season', name: 'Sæsonen', component: Season },
   { path: '/Sange', name: 'Sang katalog', component: Songs },
   { path: '/Holdet', name: 'Truppen', component: Squad },
+  { path: '/Kort', name: 'Kort', component: Kort },
   { path: '/Transfers', name: 'Transfers', component: Transfer }
 ]
 
