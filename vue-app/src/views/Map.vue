@@ -61,11 +61,10 @@ onMounted(() => {
         startMove('d', 2, 0);
         break;
       case 'arrowleft':
-        startRotate('arrowleft', -5); // rotate left by 5 degrees per tick
+        startRotate('arrowleft', -5); 
         break;
       case 'arrowright':
-        startRotate('arrowright', 5);  // rotate right by 5 degrees per tick
-        break;
+        startRotate('arrowright', 5); 
     }
   });
 
